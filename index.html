@@ -22,15 +22,16 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-theme">
+<body class="light-theme">
 
-    <!-- Interactive Canvas Background -->
-    <canvas id="particle-canvas"></canvas>
+    <!-- Custom Animated Magnetic Cursor -->
+    <div class="custom-cursor-dot" id="cursor-dot"></div>
+    <div class="custom-cursor-ring" id="cursor-ring"></div>
 
     <!-- Navigation Header -->
     <header class="header" id="header">
@@ -125,8 +126,8 @@
                             <svg viewBox="0 0 100 100" class="avatar-svg">
                                 <defs>
                                     <linearGradient id="core-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#00f2fe" />
-                                        <stop offset="100%" stop-color="#7000ff" />
+                                        <stop offset="0%" stop-color="#eb4604" />
+                                        <stop offset="100%" stop-color="#ff6b35" />
                                     </linearGradient>
                                 </defs>
                                 <circle cx="50" cy="50" r="46" fill="none" stroke="url(#core-grad)" stroke-width="2" stroke-dasharray="10, 5"></circle>

@@ -1,144 +1,60 @@
 /**
  * Saket Chawla - Portfolio Website Script
- * Interactive Canvas Particles, Auto-typing, Theme Switching, Modal Viewer, and Scroll Reveal.
+ * Custom Trailing Cursor Physics, Auto-typing, Theme Switching, Modal Viewer, and Scroll Reveal.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
-       1. INTERACTIVE CANVAS PARTICLE WEB
+       1. CUSTOM ANIMATED MAGNETIC CURSOR PHYSICS
        ========================================================================== */
-    const canvas = document.getElementById('particle-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        const maxParticles = 65; // Balanced for aesthetics and performance
-        let animationFrameId;
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorRing = document.getElementById('cursor-ring');
+    
+    if (cursorDot && cursorRing) {
+        let mouseX = 0;
+        let mouseY = 0;
+        let ringX = 0;
+        let ringY = 0;
+        let isHovered = false;
 
-        // Mouse coordinates tracker
-        const mouse = {
-            x: null,
-            y: null,
-            radius: 120 // Distance of connection to mouse
-        };
-
+        // Track real mouse coordinates
         window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Move small core dot immediately
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
         });
 
-        window.addEventListener('mouseout', () => {
-            mouse.x = null;
-            mouse.y = null;
+        // Lerping function for the larger trail ring (ease factor 0.15)
+        function animateCursorRing() {
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
+
+            cursorRing.style.left = `${ringX}px`;
+            cursorRing.style.top = `${ringY}px`;
+
+            requestAnimationFrame(animateCursorRing);
+        }
+        
+        // Start trail loop
+        animateCursorRing();
+
+        // Mouse hover interactions with links and interactive elements
+        const hoverables = document.querySelectorAll('a, button, .btn, .social-link-btn, .certificate-card, .theme-toggle-btn');
+        
+        hoverables.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorRing.classList.add('cursor-hover');
+                cursorDot.classList.add('cursor-hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorRing.classList.remove('cursor-hover');
+                cursorDot.classList.remove('cursor-hover');
+            });
         });
-
-        class Particle {
-            constructor() {
-                this.reset();
-            }
-
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                // Speeds
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 2 + 1;
-                this.color = getComputedStyle(document.body).getPropertyValue('--accent-color-1') || '#00f2fe';
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.shadowBlur = 4;
-                ctx.shadowColor = this.color;
-                ctx.fill();
-                ctx.shadowBlur = 0; // Reset shadow for lines
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                // Warp on boundaries
-                if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
-                if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < maxParticles; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initParticles();
-        }
-
-        function connectParticles() {
-            let opacityValue = 1;
-            const lineColor = getComputedStyle(document.body).getPropertyValue('--glass-border') || 'rgba(255, 255, 255, 0.08)';
-            const accentColor = getComputedStyle(document.body).getPropertyValue('--accent-color-1') || '#00f2fe';
-
-            for (let a = 0; a < particles.length; a++) {
-                // Adjust particle color on theme switch
-                particles[a].color = accentColor;
-
-                for (let b = a; b < particles.length; b++) {
-                    let dx = particles[a].x - particles[b].x;
-                    let dy = particles[a].y - particles[b].y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 90) {
-                        opacityValue = 1 - (distance / 90);
-                        ctx.strokeStyle = lineColor.replace(/[^,]+(?=\))/, opacityValue * 0.25);
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[a].x, particles[a].y);
-                        ctx.lineTo(particles[b].x, particles[b].y);
-                        ctx.stroke();
-                    }
-                }
-
-                // Connect to mouse pointer
-                if (mouse.x !== null && mouse.y !== null) {
-                    let dxMouse = particles[a].x - mouse.x;
-                    let dyMouse = particles[a].y - mouse.y;
-                    let mouseDistance = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
-
-                    if (mouseDistance < mouse.radius) {
-                        opacityValue = 1 - (mouseDistance / mouse.radius);
-                        ctx.strokeStyle = accentColor + Math.floor(opacityValue * 30).toString(16).padStart(2, '0');
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[a].x, particles[a].y);
-                        ctx.lineTo(mouse.x, mouse.y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].draw();
-                particles[i].update();
-            }
-
-            connectParticles();
-            animationFrameId = requestAnimationFrame(animate);
-        }
-
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-        animate();
     }
 
 
@@ -195,8 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggleBtn = document.getElementById('theme-toggle');
     const body = document.body;
 
-    // Read stored preference, fallback to dark theme
-    const activeTheme = localStorage.getItem('theme') || 'dark';
+    // Read stored preference, default to light cream theme
+    const activeTheme = localStorage.getItem('theme') || 'light';
     
     if (activeTheme === 'light') {
         body.classList.remove('dark-theme');
@@ -273,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       6. ACTIVE NAV LINK HILIGHTER
+       6. ACTIVE NAV LINK HIGHLIGHTER
        ========================================================================== */
     const sections = document.querySelectorAll('section[id]');
     
