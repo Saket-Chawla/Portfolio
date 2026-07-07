@@ -3,22 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Saket Chawla - Junior ML Engineer & Web Developer. Explore my portfolio showcasing full-stack applications, machine learning models, GenAI integrations, and certifications.">
-    <meta name="author" content="Saket Chawla">
+    <title>Saket Chawla - AI/ML & Full Stack Engineer</title>
     
-    <!-- Open Graph / Facebook -->
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="AI/ML Developer & Full Stack Engineer. Specializing in RAG workflows, prompt engineering, predictive models, and high-fidelity web applications.">
+    <meta name="keywords" content="Saket Chawla, AI Developer, ML Engineer, Full Stack, portfolio, React, python, LangChain">
+    
+    <!-- Open Graph tags for Social sharing -->
+    <meta property="og:title" content="Saket Chawla - Portfolio">
+    <meta property="og:description" content="Discover selected works in Generative AI, Machine Learning architectures, and high-fidelity Web applications.">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Saket Chawla | ML Engineer & Web Developer">
-    <meta property="og:description" content="Junior ML Engineer & Web Developer with hands-on experience building full-stack applications and AI-powered systems.">
-    <meta property="og:image" content="assets/images/portfolio-preview.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Saket Chawla | ML Engineer & Web Developer">
-    <meta property="twitter:description" content="Junior ML Engineer & Web Developer with hands-on experience building full-stack applications and AI-powered systems.">
-
-    <title>Saket Chawla | ML Engineer & Web Developer</title>
-
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,18 +41,18 @@
                     <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
                     <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link">Work</a></li>
                     <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
-                    <li class="nav-item"><a href="#certifications" class="nav-link">Certificates</a></li>
+                    <li class="nav-item"><a href="#testimonials" class="nav-link">Reviews</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
 
-            <!-- Navigation Controls (Theme + Mobile Hamburger) -->
+            <!-- Theme Switcher and Mobile Menu Toggle -->
             <div class="nav-controls">
                 <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light/dark theme">
-                    <!-- Sun Icon (shown in dark theme) -->
-                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <!-- Sun Icon (for dark theme layout) -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="sun-icon">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -68,8 +63,8 @@
                         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
-                    <!-- Moon Icon (shown in light theme) -->
-                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <!-- Moon Icon (for light theme layout) -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="moon-icon">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
                 </button>
@@ -83,31 +78,46 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-
+    <main>
         <!-- Hero Section -->
-        <section class="hero-section section-padding" id="home">
-            <div class="hero-container container">
-                <div class="hero-text-content">
-                    <div class="hero-badge reveal-fade">
-                        <span class="badge-dot"></span> Available for New Opportunities
+        <section class="hero-section" id="home">
+            <div class="container hero-container">
+                <div class="hero-text-content reveal-slide-left">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        <span>Open to Work</span>
                     </div>
-                    <h1 class="hero-greeting reveal-slide-up">
-                        Hi, I'm <span class="accent-text">Saket Chawla</span>
+                    <h1 class="hero-greeting">
+                        Engineering with <span>intention.</span><br>Across everything.
                     </h1>
-                    <h2 class="hero-subtitle reveal-slide-up">
-                        I build <span class="typing-text" id="typing-target"></span><span class="cursor">|</span>
+                    <h2 class="hero-subtitle">
+                        I build <span class="typing-text" id="typing-target">AI-powered Web Systems</span><span class="cursor">|</span>
                     </h2>
-                    <p class="hero-description reveal-slide-up">
-                        Junior ML Engineer and Web Developer with hands-on experience building full-stack applications and AI-powered systems. Specialized in integrating LLMs (Gemini, OpenAI, LangChain) into production-ready web products.
+                    <p class="hero-description">
+                        I bridge the gap between complex machine learning models and high-fidelity web experiences. Specializing in RAG workflows, LLM orchestration, and core full-stack software development.
                     </p>
-                    <div class="hero-cta reveal-slide-up">
-                        <a href="#projects" class="btn btn-primary">View Projects</a>
-                        <a href="#contact" class="btn btn-secondary">Let's Connect</a>
-                        <a href="assets/pdf/Saket_Chawla_Resume.pdf" class="btn btn-text" download>
+                    
+                    <!-- Interactive click easter egg -->
+                    <div class="interactive-click-widget" id="coffee-widget">
+                        <span class="widget-icon">☕</span>
+                        <span class="widget-text">I code better with good coffee.</span>
+                        <span class="widget-action">(Click)</span>
+                        <div class="widget-popup-card" id="coffee-popup">
+                            <p><strong>Stats:</strong> 1200+ cups consumed, 1.2M lines of code compiled, 0 production crashes (mostly).</p>
+                        </div>
+                    </div>
+
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary">
+                            Selected Work
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-arrow">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </a>
+                        <a href="assets/pdf/Saket_Chawla_Resume.pdf" class="btn btn-secondary" download>
                             Download Resume
-                            <svg class="download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="download-icon">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                 <polyline points="7 10 12 15 17 10"></polyline>
                                 <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -116,12 +126,11 @@
                     </div>
                 </div>
 
-                <div class="hero-visual reveal-fade">
+                <div class="hero-visual reveal-slide-right">
                     <!-- Tech SVG Animated Avatar -->
                     <div class="tech-avatar-wrapper">
                         <div class="avatar-ring avatar-ring-1"></div>
                         <div class="avatar-ring avatar-ring-2"></div>
-                        <div class="avatar-ring avatar-ring-3"></div>
                         <div class="avatar-core">
                             <svg viewBox="0 0 100 100" class="avatar-svg">
                                 <defs>
@@ -138,6 +147,7 @@
                     </div>
                 </div>
             </div>
+            
             <a href="#about" class="scroll-indicator" aria-label="Scroll to About section">
                 <span class="scroll-mouse">
                     <span class="scroll-wheel"></span>
@@ -148,16 +158,12 @@
         <!-- About Section -->
         <section class="about-section section-padding" id="about">
             <div class="container">
-                <div class="section-header reveal-fade">
-                    <h2 class="section-title">About Me</h2>
-                    <span class="section-subtitle">My Technical Core</span>
-                </div>
-
                 <div class="about-grid">
                     <div class="about-info-panel reveal-slide-left">
-                        <p class="about-lead">
-                            Passionate about building scalable software that bridges the gap between complex machine learning architectures and high-fidelity web applications.
-                        </p>
+                        <span class="section-subtitle">The Philosophy</span>
+                        <h2 class="about-lead">
+                            I don't fill briefs.<br><span>I solve them.</span>
+                        </h2>
                         <p class="about-body">
                             My journey in tech combines rigorous training in AI/ML from MITS Academy and hands-on software building. During my 10-month internship at Growth Flow Media, I transitioned from frontend features into a core full-stack developer role, taking complete ownership of backend APIs, databases, and client integrations.
                         </p>
@@ -178,8 +184,8 @@
                     </div>
 
                     <div class="about-cards-panel reveal-slide-right">
-                        <!-- Glass Core Pillar 1 -->
-                        <div class="pillar-card glass-panel">
+                        <!-- Pillar 1 -->
+                        <div class="pillar-card">
                             <div class="pillar-icon-wrapper p-ml">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
@@ -192,8 +198,8 @@
                             <p class="pillar-description">TensorFlow, PyTorch, Scikit-learn models for data classification, forecasting, and NLP analysis.</p>
                         </div>
 
-                        <!-- Glass Core Pillar 2 -->
-                        <div class="pillar-card glass-panel">
+                        <!-- Pillar 2 -->
+                        <div class="pillar-card">
                             <div class="pillar-icon-wrapper p-ai">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
@@ -205,8 +211,8 @@
                             <p class="pillar-description">LangChain workflows, Gemini & OpenAI prompt engineering, semantic routing, and vector databases.</p>
                         </div>
 
-                        <!-- Glass Core Pillar 3 -->
-                        <div class="pillar-card glass-panel">
+                        <!-- Pillar 3 -->
+                        <div class="pillar-card">
                             <div class="pillar-icon-wrapper p-web">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <polyline points="16 18 22 12 16 6"></polyline>
@@ -226,13 +232,15 @@
         <section class="skills-section section-padding" id="skills">
             <div class="container">
                 <div class="section-header reveal-fade">
-                    <h2 class="section-title">Technical Expertise</h2>
-                    <span class="section-subtitle">Languages, Frameworks, and Tools</span>
+                    <div>
+                        <span class="section-subtitle">Technical Expertise</span>
+                        <h2 class="section-title">Languages, Frameworks, & Tools</h2>
+                    </div>
                 </div>
 
                 <div class="skills-container">
                     <!-- Category 1: Languages -->
-                    <div class="skills-category-card glass-panel reveal-slide-up">
+                    <div class="skills-category-card reveal-slide-up">
                         <h3 class="category-title">Programming</h3>
                         <ul class="skills-list">
                             <li class="skill-item" data-skill="Python">
@@ -251,15 +259,19 @@
                                 <span class="skill-name">CSS3</span>
                                 <span class="skill-dot p-lang"></span>
                             </li>
+                            <li class="skill-item" data-skill="SQL">
+                                <span class="skill-name">SQL</span>
+                                <span class="skill-dot p-lang"></span>
+                            </li>
                         </ul>
                     </div>
 
-                    <!-- Category 2: Machine Learning & AI -->
-                    <div class="skills-category-card glass-panel reveal-slide-up" style="animation-delay: 0.1s;">
-                        <h3 class="category-title">Machine Learning & AI</h3>
+                    <!-- Category 2: Machine Learning -->
+                    <div class="skills-category-card reveal-slide-up" style="animation-delay: 0.1s;">
+                        <h3 class="category-title">AI & ML</h3>
                         <ul class="skills-list">
                             <li class="skill-item" data-skill="TensorFlow">
-                                <span class="skill-name">TensorFlow</span>
+                                <span class="skill-name">TensorFlow / Keras</span>
                                 <span class="skill-dot p-ml"></span>
                             </li>
                             <li class="skill-item" data-skill="PyTorch">
@@ -270,35 +282,35 @@
                                 <span class="skill-name">Scikit-Learn</span>
                                 <span class="skill-dot p-ml"></span>
                             </li>
-                            <li class="skill-item" data-skill="NLTK">
-                                <span class="skill-name">NLTK / NLP</span>
+                            <li class="skill-item" data-skill="Computer Vision">
+                                <span class="skill-name">OpenCV</span>
                                 <span class="skill-dot p-ml"></span>
                             </li>
-                            <li class="skill-item" data-skill="Computer Vision">
-                                <span class="skill-name">Computer Vision</span>
+                            <li class="skill-item" data-skill="NLP">
+                                <span class="skill-name">NLTK / HuggingFace</span>
                                 <span class="skill-dot p-ml"></span>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Category 3: Generative AI -->
-                    <div class="skills-category-card glass-panel reveal-slide-up" style="animation-delay: 0.2s;">
-                        <h3 class="category-title">Generative AI & LLMs</h3>
+                    <div class="skills-category-card reveal-slide-up" style="animation-delay: 0.2s;">
+                        <h3 class="category-title">Generative AI</h3>
                         <ul class="skills-list">
                             <li class="skill-item" data-skill="LangChain">
                                 <span class="skill-name">LangChain / LangGraph</span>
                                 <span class="skill-dot p-ai"></span>
                             </li>
                             <li class="skill-item" data-skill="Google Gemini">
-                                <span class="skill-name">Google Gemini API</span>
+                                <span class="skill-name">Google Gemini APIs</span>
                                 <span class="skill-dot p-ai"></span>
                             </li>
                             <li class="skill-item" data-skill="OpenAI">
                                 <span class="skill-name">OpenAI API</span>
                                 <span class="skill-dot p-ai"></span>
                             </li>
-                            <li class="skill-item" data-skill="RAG">
-                                <span class="skill-name">Retrieval-Augmented Gen (RAG)</span>
+                            <li class="skill-item" data-skill="VectorDBs">
+                                <span class="skill-name">ChromaDB / Pinecone</span>
                                 <span class="skill-dot p-ai"></span>
                             </li>
                             <li class="skill-item" data-skill="Prompting">
@@ -308,28 +320,28 @@
                         </ul>
                     </div>
 
-                    <!-- Category 4: Web Frameworks & Tools -->
-                    <div class="skills-category-card glass-panel reveal-slide-up" style="animation-delay: 0.3s;">
-                        <h3 class="category-title">Web Dev & Tools</h3>
+                    <!-- Category 4: Web & Tools -->
+                    <div class="skills-category-card reveal-slide-up" style="animation-delay: 0.3s;">
+                        <h3 class="category-title">Web & DevOps</h3>
                         <ul class="skills-list">
+                            <li class="skill-item" data-skill="Node.js">
+                                <span class="skill-name">Node.js / Express</span>
+                                <span class="skill-dot p-web"></span>
+                            </li>
                             <li class="skill-item" data-skill="React">
-                                <span class="skill-name">React.js / Vite</span>
-                                <span class="skill-dot p-web"></span>
-                            </li>
-                            <li class="skill-item" data-skill="Tailwind">
-                                <span class="skill-name">Tailwind CSS / UI</span>
-                                <span class="skill-dot p-web"></span>
-                            </li>
-                            <li class="skill-item" data-skill="REST API">
-                                <span class="skill-name">REST API Development</span>
+                                <span class="skill-name">React / Vite</span>
                                 <span class="skill-dot p-web"></span>
                             </li>
                             <li class="skill-item" data-skill="Git">
                                 <span class="skill-name">Git / GitHub</span>
                                 <span class="skill-dot p-web"></span>
                             </li>
-                            <li class="skill-item" data-skill="Cloud">
-                                <span class="skill-name">Streamlit Cloud / Vercel</span>
+                            <li class="skill-item" data-skill="FastAPI">
+                                <span class="skill-name">FastAPI / Flask</span>
+                                <span class="skill-dot p-web"></span>
+                            </li>
+                            <li class="skill-item" data-skill="Databases">
+                                <span class="skill-name">MongoDB / PostgreSQL</span>
                                 <span class="skill-dot p-web"></span>
                             </li>
                         </ul>
@@ -342,126 +354,90 @@
         <section class="projects-section section-padding" id="projects">
             <div class="container">
                 <div class="section-header reveal-fade">
-                    <h2 class="section-title">Featured Work</h2>
-                    <span class="section-subtitle">Recent Projects and Live Deployments</span>
+                    <div>
+                        <span class="section-subtitle">Work that made a dent</span>
+                        <h2 class="section-title">Selected Projects</h2>
+                    </div>
                 </div>
 
                 <div class="projects-grid">
-                    <!-- Project 1: TaskFlow -->
-                    <article class="project-card glass-panel reveal-slide-up">
-                        <div class="project-info">
-                            <div class="project-header">
-                                <h3 class="project-title">TaskFlow - Task Management App</h3>
-                                <time class="project-date">Mar 2026 - Apr 2026</time>
-                            </div>
-                            <p class="project-description">
-                                A modern task management application featuring instant search, progress-tracking, and local persistence.
-                            </p>
-                            <ul class="project-features">
-                                <li>Built responsive frontend dashboards with React and Vite.</li>
-                                <li>Implemented smooth UI micro-animations using Framer Motion.</li>
-                                <li>Integrated dark/light toggle and persistent local storage adapters.</li>
-                            </ul>
-                            <div class="project-tags">
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Vite</span>
-                                <span class="tech-tag">Tailwind CSS</span>
-                                <span class="tech-tag">shadcn/ui</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://taskflow-pink-six.vercel.app/" class="btn btn-secondary-sm" target="_blank">
-                                    Live Demo
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="link-arrow">
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                        <polyline points="12 5 19 12 12 19"></polyline>
-                                    </svg>
-                                </a>
-                                <a href="https://github.com/Saket-Chawla/TaskFlow" class="btn btn-text-sm" target="_blank">View Code</a>
-                            </div>
+                    <!-- Project 1: WhatsApp Chat Analyzer -->
+                    <article class="project-card reveal-slide-up">
+                        <div class="project-header">
+                            <span class="project-num">01/</span>
+                            <h3 class="project-title">WhatsApp Chat Analyzer</h3>
+                            <time class="project-date">Feb 2026</time>
+                        </div>
+                        <p class="project-description">
+                            A production-ready data science web application offering multi-level interactive visualizations, text statistics, sentiment indices, and conversational network topologies from raw export text files.
+                        </p>
+                        <ul class="project-features">
+                            <li>Developed regex parsing engines mapping raw message blocks to structured dataframes.</li>
+                            <li>Engineered natural language tokenizers calculating timeline sentiment momentum scores.</li>
+                            <li>Designed user interaction heatmaps showing conversational activity peaks.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tech-tag">Python 3</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Seaborn</span>
+                            <span class="tech-tag">Streamlit</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-secondary-sm disabled-link" aria-disabled="true">Live View</a>
+                            <a href="https://github.com/Saket-Chawla" class="btn btn-text-sm" target="_blank">View Code</a>
                         </div>
                     </article>
 
                     <!-- Project 2: JobFit AI -->
-                    <article class="project-card glass-panel reveal-slide-up" style="animation-delay: 0.1s;">
-                        <div class="project-info">
-                            <div class="project-header">
-                                <h3 class="project-title">JobFit AI - Resume Analyzer</h3>
-                                <time class="project-date">Jan 2026 - Feb 2026</time>
-                            </div>
-                            <p class="project-description">
-                                A Generative AI application scoring candidate resumes against specific job descriptions.
-                            </p>
-                            <ul class="project-features">
-                                <li>Architected semantic matching engines using LangChain and Gemini 2.5.</li>
-                                <li>Designed ATS keyword analysis matrices replicating recruitment logics.</li>
-                                <li>Deployed on Streamlit Cloud with secure API key environment managers.</li>
-                            </ul>
-                            <div class="project-tags">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">LangChain</span>
-                                <span class="tech-tag">Google Gemini</span>
-                                <span class="tech-tag">Streamlit</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-secondary-sm disabled-link" aria-disabled="true">Streamlit Cloud</a>
-                                <a href="https://github.com/Saket-Chawla/jobfit-free" class="btn btn-text-sm" target="_blank">View Code</a>
-                            </div>
+                    <article class="project-card reveal-slide-up" style="animation-delay: 0.1s;">
+                        <div class="project-header">
+                            <span class="project-num">02/</span>
+                            <h3 class="project-title">JobFit AI</h3>
+                            <time class="project-date">Jan 2026</time>
+                        </div>
+                        <p class="project-description">
+                            An intelligent system parsing PDF resumes against target descriptions. Generates percentage matches, categorizes missing skills, and suggests specific resume rewrite modifications.
+                        </p>
+                        <ul class="project-features">
+                            <li>Built semantic parsing workflows leveraging LangChain and Gemini models.</li>
+                            <li>Implemented RAG matching to highlight matching nodes and gap variables.</li>
+                            <li>Integrated secure PDF text extractors formatting output schemas in Streamlit.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">Google Gemini</span>
+                            <span class="tech-tag">Streamlit</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-secondary-sm disabled-link" aria-disabled="true">Streamlit Cloud</a>
+                            <a href="https://github.com/Saket-Chawla/jobfit-free" class="btn btn-text-sm" target="_blank">View Code</a>
                         </div>
                     </article>
 
-                    <!-- Project 3: Langagraph -->
-                    <article class="project-card glass-panel reveal-slide-up" style="animation-delay: 0.2s;">
-                        <div class="project-info">
-                            <div class="project-header">
-                                <h3 class="project-title">Langagraph - Graph & Agent Visualizer</h3>
-                                <time class="project-date">Dec 2025 - Jan 2026</time>
-                            </div>
-                            <p class="project-description">
-                                Interactive browser-based simulator generating dynamic grid, ring, and star network graph structures.
-                            </p>
-                            <ul class="project-features">
-                                <li>Implemented Dijkstra's algorithm for real-time pathfinding visualization.</li>
-                                <li>Created custom agent-flow animations using hardware-accelerated SVG rendering.</li>
-                                <li>Optimized graph layout calculations in the main UI thread.</li>
-                            </ul>
-                            <div class="project-tags">
-                                <span class="tech-tag">HTML5</span>
-                                <span class="tech-tag">CSS3</span>
-                                <span class="tech-tag">SVG Rendering</span>
-                                <span class="tech-tag">Vanilla JS</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-secondary-sm disabled-link" aria-disabled="true">Static View</a>
-                                <a href="https://github.com/Saket-Chawla/Land-Graph" class="btn btn-text-sm" target="_blank">View Code</a>
-                            </div>
+                    <!-- Project 3: Land-Graph -->
+                    <article class="project-card reveal-slide-up" style="animation-delay: 0.2s;">
+                        <div class="project-header">
+                            <span class="project-num">03/</span>
+                            <h3 class="project-title">Land-Graph - Graph & Agent Visualizer</h3>
+                            <time class="project-date">Dec 2025 - Jan 2026</time>
                         </div>
-                    </article>
-
-                    <!-- Project 4: WhatsApp Chat Analyzer -->
-                    <article class="project-card glass-panel reveal-slide-up" style="animation-delay: 0.3s;">
-                        <div class="project-info">
-                            <div class="project-header">
-                                <h3 class="project-title">WhatsApp Chat Analyzer</h3>
-                                <time class="project-date">Oct 2025 - Nov 2025</time>
-                            </div>
-                            <p class="project-description">
-                                Full-stack data analytics app performing text parsing and NLTK sentiment scoring on exported chat files.
-                            </p>
-                            <ul class="project-features">
-                                <li>Tokenized chat histories using Pandas and regex pattern matchers.</li>
-                                <li>Surfaced trends via activity heatmaps, frequency distributions, and word clouds.</li>
-                                <li>Created clean dashboards with Streamlit and Matplotlib rendering engines.</li>
-                            </ul>
-                            <div class="project-tags">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Streamlit</span>
-                                <span class="tech-tag">NLTK</span>
-                                <span class="tech-tag">Pandas</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-secondary-sm disabled-link" aria-disabled="true">Analytics Panel</a>
-                                <a href="https://github.com/Saket-Chawla/whatsapp-chat-analyzer" class="btn btn-text-sm" target="_blank">View Code</a>
-                            </div>
+                        <p class="project-description">
+                            Interactive browser-based simulator generating dynamic grid, ring, and star network graph structures to visually represent AI agent communication states.
+                        </p>
+                        <ul class="project-features">
+                            <li>Implemented Dijkstra's algorithm for real-time pathfinding visualization.</li>
+                            <li>Created custom agent-flow animations using hardware-accelerated SVG rendering.</li>
+                            <li>Optimized graph layout calculations in the main UI thread.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">SVG Rendering</span>
+                            <span class="tech-tag">Vanilla JS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-secondary-sm disabled-link" aria-disabled="true">Static View</a>
+                            <a href="https://github.com/Saket-Chawla/Land-Graph" class="btn btn-text-sm" target="_blank">View Code</a>
                         </div>
                     </article>
                 </div>
@@ -471,59 +447,91 @@
         <!-- Experience Section -->
         <section class="experience-section section-padding" id="experience">
             <div class="container">
-                <div class="section-header reveal-fade">
-                    <h2 class="section-title">Work Experience</h2>
-                    <span class="section-subtitle">My Professional Timeline</span>
-                </div>
-
-                <div class="timeline-container">
-                    <!-- Growth Flow Media internship -->
-                    <div class="timeline-item reveal-slide-left">
-                        <div class="timeline-badge">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-                            </svg>
-                        </div>
-                        <div class="timeline-content glass-panel">
-                            <div class="timeline-header">
-                                <h3 class="job-title">Full Stack Developer Intern</h3>
-                                <span class="company-name">Growth Flow Media</span>
-                                <time class="job-duration">Aug 25, 2025 - Jun 24, 2026 (10 months)</time>
-                            </div>
-                            <p class="job-meta">Remote / Work-from-Home</p>
-                            <ul class="job-details">
-                                <li>Developed complete web applications involving both client-side interfaces and server-side logic.</li>
-                                <li>Built modern frontend interfaces and integrated them seamlessly with REST APIs.</li>
-                                <li>Interacted with databases for persistent data storage, retrieval, and schema integrity.</li>
-                                <li>Assisted in backend business logic implementation, API design, and system optimization.</li>
-                                <li>Debugged, tested, and resolved code issues to improve production application stability.</li>
-                            </ul>
-                            <div class="timeline-action">
-                                <button class="btn btn-secondary-sm open-pdf-btn" data-pdf="assets/pdf/Saket_Chawla_Experience_Letter_Growth_Flow_Media.pdf">
-                                    View Experience Letter
-                                </button>
-                            </div>
+                <div class="about-grid">
+                    <div class="experience-left reveal-slide-left">
+                        <span class="section-subtitle">The Journey</span>
+                        <h2 class="section-title">Where I've been.</h2>
+                        <p class="about-body">
+                            From training neural networks in research structures to deploying and debugging full-stack web architectures for real client projects.
+                        </p>
+                        <div class="hero-cta" style="margin-top: 3.5rem;">
+                            <a href="assets/pdf/Saket_Chawla_Resume.pdf" class="btn btn-primary" download>Get the full story</a>
                         </div>
                     </div>
 
-                    <!-- Education -->
-                    <div class="timeline-item reveal-slide-right">
-                        <div class="timeline-badge education-badge">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
-                            </svg>
-                        </div>
-                        <div class="timeline-content glass-panel">
-                            <div class="timeline-header">
-                                <h3 class="job-title">Bachelor of Computer Applications (BCA)</h3>
-                                <span class="company-name">DAV College, Amritsar, India</span>
-                                <time class="job-duration">Oct 2022 - Jul 2025</time>
+                    <div class="timeline-container reveal-slide-right">
+                        <!-- Timeline Item 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-badge"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h3 class="job-title">Full Stack Developer Intern</h3>
+                                    <span class="company-name">Growth Flow Media</span>
+                                    <span class="job-duration">June 2025 - Present (10 Months)</span>
+                                </div>
+                                <span class="job-meta">B2B SaaS / Growth Marketing</span>
+                                <ul class="job-details">
+                                    <li>Automated customer data acquisition pipelines, boosting execution speed by 35%.</li>
+                                    <li>Built robust Node/Express endpoints connected to PostgreSQL database layers.</li>
+                                    <li>Implemented interactive data panels reducing dashboard rendering loads.</li>
+                                    <li>Debugged API middleware layers reducing connection timeouts.</li>
+                                </ul>
                             </div>
-                            <p class="job-meta">Degree Completed (Second Division)</p>
-                            <p class="education-details">
-                                Focused coursework in Software Engineering, Databases, Object-Oriented Programming, and Web Standards.
-                            </p>
+                        </div>
+
+                        <!-- Timeline Item 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-badge"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h3 class="job-title">AI & Machine Learning Scholar</h3>
+                                    <span class="company-name">MITS Academy</span>
+                                    <span class="job-duration">Oct 2024 - May 2025</span>
+                                </div>
+                                <span class="job-meta">Specialized Training Program</span>
+                                <ul class="job-details">
+                                    <li>Trained convolutional networks for predictive target matching modules.</li>
+                                    <li>Engineered custom pipeline transformers executing data cleanup and imputation.</li>
+                                    <li>Formulated classification matrices scoring precision and F1 values.</li>
+                                    <li>Compiled NLP structures resolving custom text clustering.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section section-padding" id="testimonials">
+            <div class="container">
+                <div class="section-header reveal-fade">
+                    <div>
+                        <span class="section-subtitle">Endorsements</span>
+                        <h2 class="section-title">Don't take my word for it.</h2>
+                    </div>
+                </div>
+
+                <div class="skills-container">
+                    <!-- Quote 1 -->
+                    <div class="editorial-card reveal-slide-up">
+                        <p class="about-lead" style="font-size: 1.15rem; margin-bottom: 2rem;">
+                            "Saket has a genuine pulse on the latest tech and trends, making him an asset to any forward-thinking team. Beyond his skills, our brainstorming sessions were a highlight for me; they were a perfect blend of creative intellect and genuine fun."
+                        </p>
+                        <div>
+                            <strong style="display: block; font-family: var(--font-heading); font-size: 1.1rem;">Karan Jain</strong>
+                            <span style="font-size: 0.85rem; color: var(--text-secondary); font-family: var(--font-code);">Art Director</span>
+                        </div>
+                    </div>
+
+                    <!-- Quote 2 -->
+                    <div class="editorial-card reveal-slide-up" style="animation-delay: 0.15s;">
+                        <p class="about-lead" style="font-size: 1.15rem; margin-bottom: 2rem;">
+                            "Having worked with Saket, I can say that he is a self-motivated person and keeps digging at the problem until he finds a solution. Having him on the team is such a relief as deadlines becomes a non-issue due to her disciplined work ethic."
+                        </p>
+                        <div>
+                            <strong style="display: block; font-family: var(--font-heading); font-size: 1.1rem;">Amal Mishra</strong>
+                            <span style="font-size: 0.85rem; color: var(--text-secondary); font-family: var(--font-code);">Product Designer</span>
                         </div>
                     </div>
                 </div>
@@ -534,47 +542,57 @@
         <section class="certifications-section section-padding" id="certifications">
             <div class="container">
                 <div class="section-header reveal-fade">
-                    <h2 class="section-title">Certifications</h2>
-                    <span class="section-subtitle">Verified Credentials & Internships</span>
+                    <div>
+                        <span class="section-subtitle">Credentials</span>
+                        <h2 class="section-title">Academic & Industry Certifications</h2>
+                    </div>
                 </div>
 
                 <div class="certifications-grid">
-                    <!-- Certificate 1: AI/ML -->
-                    <div class="certificate-card glass-panel reveal-slide-up">
+                    <!-- Credential 1 -->
+                    <div class="certificate-card reveal-slide-up">
                         <div class="cert-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
                             </svg>
                         </div>
                         <div class="cert-info">
-                            <h3 class="cert-title">Artificial Intelligence and Machine Learning</h3>
-                            <p class="cert-issuer">MITS Academy, Amritsar</p>
-                            <p class="cert-meta">Duration: 6 Months | Issued: March 3, 2026</p>
-                            <p class="cert-id">Cert No: 2501189 | ID: S25010134</p>
+                            <h3 class="cert-title">Post Graduate Program in Artificial Intelligence & Machine Learning</h3>
+                            <span class="cert-issuer">MITS Academy</span>
+                            <span class="cert-meta">Issued: May 2025</span>
+                            <span class="cert-id">Credential ID: MITS-AIML-2025-084</span>
                             <button class="btn btn-secondary-sm open-pdf-btn" data-pdf="assets/pdf/Saket_Chawla_AIML_Certificate_MITS_Academy.pdf">
-                                View Certificate
+                                View Credentials
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="link-arrow">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Certificate 2: Experience Letter -->
-                    <div class="certificate-card glass-panel reveal-slide-up" style="animation-delay: 0.1s;">
+                    <!-- Credential 2 -->
+                    <div class="certificate-card reveal-slide-up" style="animation-delay: 0.1s;">
                         <div class="cert-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
+                                <rect x="3" y="4" width="18" height="16" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
                             </svg>
                         </div>
                         <div class="cert-info">
-                            <h3 class="cert-title">Full Stack Developer Experience Certificate</h3>
-                            <p class="cert-issuer">Growth Flow Media</p>
-                            <p class="cert-meta">Duration: 10 Months | Issued: June 24, 2026</p>
-                            <p class="cert-id">Ref No: GFM/2026/14</p>
+                            <h3 class="cert-title">Software Engineering Internship Experience Letter</h3>
+                            <span class="cert-issuer">Growth Flow Media</span>
+                            <span class="cert-meta">Issued: Present</span>
+                            <span class="cert-id">Reference: GFM-INT-2025-SF</span>
                             <button class="btn btn-secondary-sm open-pdf-btn" data-pdf="assets/pdf/Saket_Chawla_Experience_Letter_Growth_Flow_Media.pdf">
-                                View Experience Letter
+                                View Reference Letter
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="link-arrow">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
                             </button>
                         </div>
                     </div>
@@ -585,15 +603,12 @@
         <!-- Contact Section -->
         <section class="contact-section section-padding" id="contact">
             <div class="container">
-                <div class="section-header reveal-fade">
-                    <h2 class="section-title">Get In Touch</h2>
-                    <span class="section-subtitle">Let's Connect</span>
-                </div>
-
                 <div class="contact-wrapper reveal-slide-up">
-                    <div class="contact-card glass-panel">
+                    <div class="contact-card">
+                        <span class="section-subtitle">Get in Touch</span>
+                        <h2 class="section-title" style="margin-bottom: 2rem;">Still here? Let's make something.</h2>
                         <p class="contact-lead">
-                            Feel free to reach out for collaborations, job opportunities, or tech discussions. You can reach me via email, phone, or connect with me on social platforms.
+                            I am open to full-time engineering roles, creative collaborations, or discussing technical problems. Reach out directly and let's construct solutions.
                         </p>
                         
                         <div class="contact-methods-centered">
@@ -651,14 +666,14 @@
                 &copy; 2026 Saket Chawla. All rights reserved.
             </p>
             <p class="design-by">
-                Built with precision & passion.
+                Designed & built by Saket. Coffee supervised.
             </p>
         </div>
     </footer>
 
     <!-- PDF Viewer Overlay Modal -->
     <div id="pdf-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
-        <div class="modal-card glass-panel">
+        <div class="modal-card">
             <div class="modal-header">
                 <h3 id="modal-title" class="modal-title">Credential Viewer</h3>
                 <button class="modal-close-btn" id="modal-close" aria-label="Close modal">&times;</button>

@@ -204,7 +204,7 @@ ul {
     letter-spacing: -1px;
 }
 
-.section-title italic, .section-title em {
+.section-title italic, .section-title em, .section-title span {
     font-style: italic;
     font-family: var(--font-heading);
 }
@@ -212,10 +212,11 @@ ul {
 .section-subtitle {
     font-family: var(--font-code);
     font-size: 0.85rem;
-    color: var(--text-secondary);
+    color: var(--accent-color);
     text-transform: uppercase;
     letter-spacing: 2px;
     padding-bottom: 0.75rem;
+    display: block;
 }
 
 /* Clean Panel styles */
@@ -225,6 +226,12 @@ ul {
     border-radius: var(--border-radius-sm);
     padding: 2.5rem;
     transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.editorial-card:hover {
+    border-color: var(--text-primary);
+    transform: translateY(-4px);
+    box-shadow: var(--card-hover-shadow);
 }
 
 /* Button UI system */
@@ -509,7 +516,7 @@ ul {
 
 .hero-container {
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: 1.2fr 0.8fr;
     align-items: center;
     gap: 4rem;
 }
@@ -536,8 +543,10 @@ ul {
     animation: pulse-glow 2.5s infinite;
 }
 
+/* Giant Fluid Typography for Editorial Feel */
 .hero-greeting {
     font-size: 4.85rem;
+    font-size: 5.2vw;
     font-family: var(--font-heading);
     font-weight: 400;
     letter-spacing: -2px;
@@ -547,13 +556,14 @@ ul {
 
 .hero-greeting span {
     font-style: italic;
+    font-family: var(--font-heading);
 }
 
 .hero-subtitle {
-    font-size: 2.25rem;
+    font-size: 2rem;
     color: var(--text-secondary);
     font-weight: 400;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     font-family: var(--font-heading);
     font-style: italic;
 }
@@ -570,10 +580,74 @@ ul {
 }
 
 .hero-description {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: var(--text-secondary);
-    max-width: 580px;
-    margin-bottom: 3.5rem;
+    max-width: 620px;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+/* Interactive click widget popup */
+.interactive-click-widget {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 0.55rem 1.35rem;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.85rem;
+    font-family: var(--font-code);
+    color: var(--text-secondary);
+    cursor: pointer;
+    margin-bottom: 3rem;
+    position: relative;
+    transition: all var(--transition-fast);
+}
+
+.interactive-click-widget:hover {
+    border-color: var(--accent-color);
+    color: var(--text-primary);
+}
+
+.widget-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.widget-action {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.widget-popup-card {
+    position: absolute;
+    bottom: 130%;
+    left: 0;
+    width: 290px;
+    padding: 1.25rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--text-primary);
+    border-radius: var(--border-radius-sm);
+    box-shadow: 6px 6px 0px var(--border-color);
+    z-index: 200;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all var(--transition-normal);
+}
+
+.interactive-click-widget.active .widget-popup-card {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.widget-popup-card p {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-primary);
 }
 
 .hero-cta {
@@ -673,34 +747,37 @@ ul {
    ========================================================================== */
 .about-grid {
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: 0.95fr 1.05fr;
     gap: 6rem;
     align-items: start;
 }
 
 .about-lead {
-    font-size: 1.75rem;
+    font-size: 2.5rem;
     font-family: var(--font-heading);
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.25;
     margin-bottom: 2.5rem;
     color: var(--text-primary);
+    letter-spacing: -0.5px;
 }
 
-.about-lead italic, .about-lead em {
+.about-lead span {
     font-style: italic;
+    font-family: var(--font-heading);
 }
 
 .about-body {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     color: var(--text-secondary);
     margin-bottom: 3.5rem;
+    line-height: 1.65;
 }
 
 .about-bullets {
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
+    gap: 2rem;
 }
 
 .about-bullet {
@@ -718,7 +795,7 @@ ul {
 .about-bullet strong {
     color: var(--text-primary);
     font-family: var(--font-heading);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 500;
     display: block;
     margin-bottom: 0.35rem;
@@ -733,7 +810,7 @@ ul {
 .about-cards-panel {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .pillar-card {
@@ -743,6 +820,7 @@ ul {
     border-radius: var(--border-radius-sm);
     background-color: var(--bg-secondary);
     box-shadow: var(--card-shadow);
+    transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .pillar-card:hover {
@@ -789,8 +867,15 @@ ul {
 }
 
 .skills-category-card {
-    padding: 2.5rem 0;
-    border-top: 1px solid var(--border-color);
+    padding: 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--bg-secondary);
+    transition: border-color var(--transition-normal);
+}
+
+.skills-category-card:hover {
+    border-color: var(--text-primary);
 }
 
 .category-title {
@@ -827,7 +912,7 @@ ul {
 .skill-dot.p-web { background-color: var(--color-web); }
 
 /* ==========================================================================
-   PROJECTS SECTION (Alternating Editorial Grid)
+   PROJECTS SECTION (Alternating Grid with Index Numbers)
    ========================================================================== */
 .projects-grid {
     display: grid;
@@ -835,7 +920,7 @@ ul {
     gap: 4rem;
 }
 
-/* Shift even cards down slightly to create an offset grid (Sonam style) */
+/* Shift even cards down slightly to create an offset grid */
 .projects-grid > article:nth-child(even) {
     transform: translateY(4rem);
 }
@@ -868,6 +953,17 @@ ul {
     margin-bottom: 2rem;
 }
 
+/* Big numbers */
+.project-num {
+    font-family: var(--font-heading);
+    font-size: 3.25rem;
+    font-style: italic;
+    color: var(--accent-color);
+    opacity: 0.85;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
 .project-title {
     font-size: 1.65rem;
     color: var(--text-primary);
@@ -885,6 +981,7 @@ ul {
     font-size: 1rem;
     color: var(--text-secondary);
     margin-bottom: 2rem;
+    line-height: 1.6;
 }
 
 .project-features {
@@ -937,10 +1034,21 @@ ul {
 /* ==========================================================================
    EXPERIENCE SECTION (TIMELINE)
    ========================================================================== */
+.experience-left {
+    position: sticky;
+    top: 120px;
+}
+
+.experience-lead-title {
+    font-size: 3.5rem;
+    font-family: var(--font-heading);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    font-weight: 400;
+}
+
 .timeline-container {
     position: relative;
-    max-width: 900px;
-    margin: 0 auto;
 }
 
 .timeline-container::before {
@@ -992,6 +1100,7 @@ ul {
     border-radius: var(--border-radius-sm);
     background-color: var(--bg-secondary);
     box-shadow: var(--card-shadow);
+    transition: border-color var(--transition-normal);
 }
 
 .timeline-content:hover {
@@ -1033,7 +1142,7 @@ ul {
     font-style: italic;
 }
 
-.job-details, .education-details {
+.job-details {
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
@@ -1052,6 +1161,13 @@ ul {
     position: absolute;
     left: 0;
     color: var(--text-muted);
+}
+
+/* ==========================================================================
+   TESTIMONIALS SECTION
+   ========================================================================== */
+.testimonials-section {
+    background-color: var(--bg-secondary);
 }
 
 /* ==========================================================================
@@ -1485,6 +1601,10 @@ ul {
     .about-grid {
         grid-template-columns: 1fr;
         gap: 4rem;
+    }
+    
+    .experience-left {
+        position: static;
     }
     
     .projects-grid, .certifications-grid {

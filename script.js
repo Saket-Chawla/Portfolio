@@ -1,6 +1,6 @@
 /**
  * Saket Chawla - Portfolio Website Script
- * Custom Trailing Cursor Physics, Auto-typing, Theme Switching, Modal Viewer, and Scroll Reveal.
+ * Custom Trailing Cursor Physics, Auto-typing, Theme Switching, Modal Viewer, Coffee Widget, and Scroll Reveal.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let mouseY = 0;
         let ringX = 0;
         let ringY = 0;
-        let isHovered = false;
 
         // Track real mouse coordinates
         window.addEventListener('mousemove', (e) => {
@@ -43,23 +42,55 @@ document.addEventListener('DOMContentLoaded', () => {
         animateCursorRing();
 
         // Mouse hover interactions with links and interactive elements
-        const hoverables = document.querySelectorAll('a, button, .btn, .social-link-btn, .certificate-card, .theme-toggle-btn');
+        function updateHoverListeners() {
+            const hoverables = document.querySelectorAll('a, button, .btn, .social-link-btn, .certificate-card, .theme-toggle-btn, .interactive-click-widget');
+            
+            hoverables.forEach(el => {
+                // Remove existing to avoid duplicates
+                el.removeEventListener('mouseenter', addHoverClass);
+                el.removeEventListener('mouseleave', removeHoverClass);
+                
+                el.addEventListener('mouseenter', addHoverClass);
+                el.addEventListener('mouseleave', removeHoverClass);
+            });
+        }
+
+        function addHoverClass() {
+            cursorRing.classList.add('cursor-hover');
+            cursorDot.classList.add('cursor-hover');
+        }
+
+        function removeHoverClass() {
+            cursorRing.classList.remove('cursor-hover');
+            cursorDot.classList.remove('cursor-hover');
+        }
+
+        // Initialize listeners
+        updateHoverListeners();
         
-        hoverables.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorRing.classList.add('cursor-hover');
-                cursorDot.classList.add('cursor-hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorRing.classList.remove('cursor-hover');
-                cursorDot.classList.remove('cursor-hover');
-            });
+        // Expose helper to re-bind when DOM changes
+        window.rebindCursorListeners = updateHoverListeners;
+    }
+
+
+    /* ==========================================================================
+       2. COFFEE WIDGET INTERACTION (EASTER EGG)
+       ========================================================================== */
+    const coffeeWidget = document.getElementById('coffee-widget');
+    if (coffeeWidget) {
+        coffeeWidget.addEventListener('click', (e) => {
+            e.stopPropagation();
+            coffeeWidget.classList.toggle('active');
+        });
+
+        document.addEventListener('click', () => {
+            coffeeWidget.classList.remove('active');
         });
     }
 
 
     /* ==========================================================================
-       2. TEXT TYPING EFFECT (HERO SECTION)
+       3. TEXT TYPING EFFECT (HERO SECTION)
        ========================================================================== */
     const typingTarget = document.getElementById('typing-target');
     if (typingTarget) {
@@ -106,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       3. DARK / LIGHT THEME TOGGLE & PERSISTENCE
+       4. DARK / LIGHT THEME TOGGLE & PERSISTENCE
        ========================================================================== */
     const themeToggleBtn = document.getElementById('theme-toggle');
     const body = document.body;
@@ -138,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       4. MOBILE MENU INTERACTION
+       5. MOBILE MENU INTERACTION
        ========================================================================== */
     const mobileToggle = document.getElementById('mobile-toggle');
     const navMenu = document.getElementById('nav-menu');
@@ -168,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       5. SCROLL REVEAL (INTERSECTION OBSERVER)
+       6. SCROLL REVEAL (INTERSECTION OBSERVER)
        ========================================================================== */
     const revealElements = document.querySelectorAll('.reveal-fade, .reveal-slide-up, .reveal-slide-left, .reveal-slide-right');
 
@@ -189,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       6. ACTIVE NAV LINK HIGHLIGHTER
+       7. ACTIVE NAV LINK HIGHLIGHTER
        ========================================================================== */
     const sections = document.querySelectorAll('section[id]');
     
@@ -215,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       7. PDF CREDENTIAL VIEWER MODAL
+       8. PDF CREDENTIAL VIEWER MODAL
        ========================================================================== */
     const pdfModal = document.getElementById('pdf-modal');
     const modalClose = document.getElementById('modal-close');
