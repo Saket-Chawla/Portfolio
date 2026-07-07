@@ -1,16 +1,18 @@
 /**
  * Saket Chawla - Portfolio Website Script
- * Replicates Wall of Portfolios Showcase Interactions:
- * Tab switching (Portfolio / Profile), Custom Trailing Cursor, Coffee Widget, Theme Switcher, and Modal Viewer.
+ * Replicates Sonam's Editorial Interactions:
+ * Header scroll-reveal toggles, Custom Cursor with dynamic text hover indicators, 
+ * Coffee widget counter popup, and PDF Modal overlay.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
-       1. CUSTOM ANIMATED MAGNETIC CURSOR PHYSICS
+       1. CUSTOM ANIMATED MAGNETIC CURSOR & TOOLTIPS
        ========================================================================== */
     const cursorDot = document.getElementById('cursor-dot');
     const cursorRing = document.getElementById('cursor-ring');
+    const cursorText = document.getElementById('cursor-text');
     
     if (cursorDot && cursorRing) {
         let mouseX = 0;
@@ -42,20 +44,28 @@ document.addEventListener('DOMContentLoaded', () => {
         // Start trail loop
         animateCursorRing();
 
-        // Mouse hover interactions with links and interactive elements
+        // Mouse hover interactions with standard links/buttons and card tooltips
         function updateHoverListeners() {
-            const hoverables = document.querySelectorAll('a, button, .btn, .social-link-btn, .theme-toggle-btn, .interactive-click-widget, .tab-btn, .contact-editorial-item');
-            
+            // Standard hovers (buttons, navigation, icons)
+            const hoverables = document.querySelectorAll('a, button, .btn, .theme-toggle-btn, .interactive-click-widget');
             hoverables.forEach(el => {
-                // Remove existing to avoid duplicates
                 el.removeEventListener('mouseenter', addHoverClass);
                 el.removeEventListener('mouseleave', removeHoverClass);
-                
                 el.addEventListener('mouseenter', addHoverClass);
                 el.addEventListener('mouseleave', removeHoverClass);
             });
+
+            // Card hovers (elements with data-cursor-text, e.g. project cards)
+            const cardHoverables = document.querySelectorAll('[data-cursor-text]');
+            cardHoverables.forEach(el => {
+                el.removeEventListener('mouseenter', addCardHoverClass);
+                el.removeEventListener('mouseleave', removeCardHoverClass);
+                el.addEventListener('mouseenter', addCardHoverClass);
+                el.addEventListener('mouseleave', removeCardHoverClass);
+            });
         }
 
+        // Standard link hover
         function addHoverClass() {
             cursorRing.classList.add('cursor-hover');
             cursorDot.classList.add('cursor-hover');
@@ -64,6 +74,24 @@ document.addEventListener('DOMContentLoaded', () => {
         function removeHoverClass() {
             cursorRing.classList.remove('cursor-hover');
             cursorDot.classList.remove('cursor-hover');
+        }
+
+        // Card tooltip hover (displays "VIEW" bubble)
+        function addCardHoverClass(e) {
+            const textVal = e.currentTarget.getAttribute('data-cursor-text');
+            if (cursorText && textVal) {
+                cursorText.textContent = textVal;
+            }
+            cursorRing.classList.add('cursor-card-hover');
+            cursorDot.classList.add('cursor-card-hover');
+        }
+
+        function removeCardHoverClass() {
+            cursorRing.classList.remove('cursor-card-hover');
+            cursorDot.classList.remove('cursor-card-hover');
+            if (cursorText) {
+                cursorText.textContent = '';
+            }
         }
 
         // Initialize listeners
@@ -75,39 +103,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       2. TAB NAVIGATION SWITCHER (PROFILE / PORTFOLIO)
+       2. STICKY HEADER SCROLL DIRECTION TOGGLE
        ========================================================================== */
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const rightPane = document.querySelector('.right-content-pane');
+    const header = document.getElementById('header');
+    let lastScrollY = window.pageYOffset;
 
-    tabButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const targetTab = btn.getAttribute('data-tab');
-            if (!targetTab) return;
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.pageYOffset;
+        
+        if (!header) return;
 
-            // Remove active class from all buttons, add to clicked
-            tabButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+        // Hide header on scroll down, show on scroll up
+        if (currentScrollY > lastScrollY && currentScrollY > 150) {
+            header.classList.add('header-hidden');
+        } else {
+            header.classList.remove('header-hidden');
+        }
 
-            // Hide all view panels
-            const panels = document.querySelectorAll('.view-panel');
-            panels.forEach(panel => {
-                panel.classList.remove('active-view');
-                panel.classList.add('hidden-view');
-            });
-
-            // Show active view panel
-            const activePanel = document.getElementById(`${targetTab}-view`);
-            if (activePanel) {
-                activePanel.classList.remove('hidden-view');
-                activePanel.classList.add('active-view');
-            }
-
-            // Scroll right content area back to top
-            if (rightPane) {
-                rightPane.scrollTop = 0;
-            }
-        });
+        lastScrollY = currentScrollY;
     });
 
 
@@ -128,27 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       4. BOOKMARK TOGGLE BUTTON
-       ========================================================================== */
-    const bookmarkBtn = document.getElementById('bookmark-btn');
-    if (bookmarkBtn) {
-        bookmarkBtn.addEventListener('click', () => {
-            bookmarkBtn.classList.toggle('btn-primary');
-            bookmarkBtn.classList.toggle('btn-secondary');
-            
-            // Subtle feedback (can be expanded to localStorage bookmarking)
-            const icon = bookmarkBtn.querySelector('.btn-icon');
-            if (bookmarkBtn.classList.contains('btn-primary')) {
-                icon.setAttribute('fill', 'currentColor');
-            } else {
-                icon.setAttribute('fill', 'none');
-            }
-        });
-    }
-
-
-    /* ==========================================================================
-       5. DARK / LIGHT THEME TOGGLE & PERSISTENCE
+       4. DARK / LIGHT THEME TOGGLE & PERSISTENCE
        ========================================================================== */
     const themeToggleBtn = document.getElementById('theme-toggle');
     const body = document.body;
@@ -166,24 +159,97 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', () => {
-            const themeLabel = themeToggleBtn.querySelector('.theme-text');
             if (body.classList.contains('dark-theme')) {
                 body.classList.remove('dark-theme');
                 body.classList.add('light-theme');
                 localStorage.setItem('theme', 'light');
-                if (themeLabel) themeLabel.textContent = 'Dark Theme';
             } else {
                 body.classList.remove('light-theme');
                 body.classList.add('dark-theme');
                 localStorage.setItem('theme', 'dark');
-                if (themeLabel) themeLabel.textContent = 'Light Theme';
             }
         });
     }
 
 
     /* ==========================================================================
-       6. PDF CREDENTIAL VIEWER MODAL
+       5. MOBILE MENU INTERACTION
+       ========================================================================== */
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            // Disable scroll when mobile menu is active
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close menu on link clicks
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    }
+
+
+    /* ==========================================================================
+       6. SCROLL REVEAL (INTERSECTION OBSERVER)
+       ========================================================================== */
+    const revealElements = document.querySelectorAll('.reveal-fade, .reveal-slide-up, .reveal-slide-left, .reveal-slide-right');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1, // Trigger when 10% is visible
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+
+    /* ==========================================================================
+       7. ACTIVE NAV LINK HIGHLIGHTER
+       ========================================================================== */
+    const sections = document.querySelectorAll('section[id]');
+    
+    function highlightActiveLink() {
+        const scrollY = window.pageYOffset;
+        
+        sections.forEach(current => {
+            const sectionHeight = current.offsetHeight;
+            const sectionTop = current.offsetTop - 150; // Match navigation offset
+            const sectionId = current.getAttribute('id');
+            const targetLink = document.querySelector(`.nav-link[href*="${sectionId}"]`);
+            
+            if (targetLink) {
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    targetLink.classList.add('active');
+                }
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', highlightActiveLink);
+
+
+    /* ==========================================================================
+       8. PDF CREDENTIAL VIEWER MODAL
        ========================================================================== */
     const pdfModal = document.getElementById('pdf-modal');
     const modalClose = document.getElementById('modal-close');
