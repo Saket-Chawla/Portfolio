@@ -950,64 +950,6 @@ a {
 }
 
 /* ==========================================================================
-   TESTIMONIALS SECTION
-   ========================================================================== */
-.testimonials-brutalist-section {
-    background-color: transparent;
-    border-top: 1.5px solid var(--border-color);
-    margin-top: 7rem;
-    padding-top: 6rem;
-}
-
-.testimonials-grid-brutalist {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 4rem;
-}
-
-.testimonial-brutalist-card {
-    background-color: var(--bg-secondary);
-    border: 1.5px solid var(--border-color);
-    border-radius: var(--border-radius-sm);
-    padding: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: border-color var(--transition-normal);
-}
-
-.testimonial-brutalist-card:hover {
-    border-color: var(--text-primary);
-}
-
-.testimonial-quote {
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    color: var(--text-primary);
-    line-height: 1.5;
-    font-style: italic;
-    margin-bottom: 2.5rem;
-    font-weight: 500;
-}
-
-.testimonial-author {
-    font-style: normal;
-    display: flex;
-    flex-direction: column;
-}
-
-.testimonial-author strong {
-    font-size: 1.05rem;
-    font-weight: 600;
-}
-
-.testimonial-author span {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-family: var(--font-code);
-}
-
-/* ==========================================================================
    CONTACT SECTION (Editorial Card Panel)
    ========================================================================== */
 .contact-card-brutalist {
