@@ -1,6 +1,7 @@
 /**
  * Saket Chawla - Portfolio Website Script
- * Custom Trailing Cursor Physics, Auto-typing, Theme Switching, Modal Viewer, Coffee Widget, and Scroll Reveal.
+ * Replicates Wall of Portfolios Showcase Interactions:
+ * Tab switching (Portfolio / Profile), Custom Trailing Cursor, Coffee Widget, Theme Switcher, and Modal Viewer.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Mouse hover interactions with links and interactive elements
         function updateHoverListeners() {
-            const hoverables = document.querySelectorAll('a, button, .btn, .social-link-btn, .certificate-card, .theme-toggle-btn, .interactive-click-widget');
+            const hoverables = document.querySelectorAll('a, button, .btn, .social-link-btn, .theme-toggle-btn, .interactive-click-widget, .tab-btn, .contact-editorial-item');
             
             hoverables.forEach(el => {
                 // Remove existing to avoid duplicates
@@ -74,7 +75,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       2. COFFEE WIDGET INTERACTION (EASTER EGG)
+       2. TAB NAVIGATION SWITCHER (PROFILE / PORTFOLIO)
+       ========================================================================== */
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const rightPane = document.querySelector('.right-content-pane');
+
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetTab = btn.getAttribute('data-tab');
+            if (!targetTab) return;
+
+            // Remove active class from all buttons, add to clicked
+            tabButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Hide all view panels
+            const panels = document.querySelectorAll('.view-panel');
+            panels.forEach(panel => {
+                panel.classList.remove('active-view');
+                panel.classList.add('hidden-view');
+            });
+
+            // Show active view panel
+            const activePanel = document.getElementById(`${targetTab}-view`);
+            if (activePanel) {
+                activePanel.classList.remove('hidden-view');
+                activePanel.classList.add('active-view');
+            }
+
+            // Scroll right content area back to top
+            if (rightPane) {
+                rightPane.scrollTop = 0;
+            }
+        });
+    });
+
+
+    /* ==========================================================================
+       3. COFFEE WIDGET INTERACTION (EASTER EGG)
        ========================================================================== */
     const coffeeWidget = document.getElementById('coffee-widget');
     if (coffeeWidget) {
@@ -90,54 +128,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       3. TEXT TYPING EFFECT (HERO SECTION)
+       4. BOOKMARK TOGGLE BUTTON
        ========================================================================== */
-    const typingTarget = document.getElementById('typing-target');
-    if (typingTarget) {
-        const roles = [
-            "AI-powered Web Systems",
-            "Machine Learning Solutions",
-            "Generative AI Integrations",
-            "Full Stack Web Products"
-        ];
-        let roleIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 70;
-
-        function type() {
-            const currentRole = roles[roleIndex];
+    const bookmarkBtn = document.getElementById('bookmark-btn');
+    if (bookmarkBtn) {
+        bookmarkBtn.addEventListener('click', () => {
+            bookmarkBtn.classList.toggle('btn-primary');
+            bookmarkBtn.classList.toggle('btn-secondary');
             
-            if (isDeleting) {
-                typingTarget.textContent = currentRole.substring(0, charIndex - 1);
-                charIndex--;
-                typingSpeed = 30; // Faster deleting speed
+            // Subtle feedback (can be expanded to localStorage bookmarking)
+            const icon = bookmarkBtn.querySelector('.btn-icon');
+            if (bookmarkBtn.classList.contains('btn-primary')) {
+                icon.setAttribute('fill', 'currentColor');
             } else {
-                typingTarget.textContent = currentRole.substring(0, charIndex + 1);
-                charIndex++;
-                typingSpeed = 70; // Standard typing speed
+                icon.setAttribute('fill', 'none');
             }
-
-            // Word completed
-            if (!isDeleting && charIndex === currentRole.length) {
-                isDeleting = true;
-                typingSpeed = 2000; // Pause before deleting
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                roleIndex = (roleIndex + 1) % roles.length;
-                typingSpeed = 400; // Pause before typing next word
-            }
-
-            setTimeout(type, typingSpeed);
-        }
-
-        // Start Typing Animation after a tiny delay
-        setTimeout(type, 1000);
+        });
     }
 
 
     /* ==========================================================================
-       4. DARK / LIGHT THEME TOGGLE & PERSISTENCE
+       5. DARK / LIGHT THEME TOGGLE & PERSISTENCE
        ========================================================================== */
     const themeToggleBtn = document.getElementById('theme-toggle');
     const body = document.body;
@@ -155,98 +166,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', () => {
+            const themeLabel = themeToggleBtn.querySelector('.theme-text');
             if (body.classList.contains('dark-theme')) {
                 body.classList.remove('dark-theme');
                 body.classList.add('light-theme');
                 localStorage.setItem('theme', 'light');
+                if (themeLabel) themeLabel.textContent = 'Dark Theme';
             } else {
                 body.classList.remove('light-theme');
                 body.classList.add('dark-theme');
                 localStorage.setItem('theme', 'dark');
+                if (themeLabel) themeLabel.textContent = 'Light Theme';
             }
         });
     }
 
 
     /* ==========================================================================
-       5. MOBILE MENU INTERACTION
-       ========================================================================== */
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', () => {
-            mobileToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            // Disable scroll when mobile menu is active
-            if (navMenu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Close menu on link clicks
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-        });
-    }
-
-
-    /* ==========================================================================
-       6. SCROLL REVEAL (INTERSECTION OBSERVER)
-       ========================================================================== */
-    const revealElements = document.querySelectorAll('.reveal-fade, .reveal-slide-up, .reveal-slide-left, .reveal-slide-right');
-
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                // Unobserve once shown
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.12, // Trigger when 12% is visible
-        rootMargin: '0px 0px -50px 0px' // Offset trigger point slightly
-    });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-
-
-    /* ==========================================================================
-       7. ACTIVE NAV LINK HIGHLIGHTER
-       ========================================================================== */
-    const sections = document.querySelectorAll('section[id]');
-    
-    function highlightActiveLink() {
-        const scrollY = window.pageYOffset;
-        
-        sections.forEach(current => {
-            const sectionHeight = current.offsetHeight;
-            const sectionTop = current.offsetTop - 120; // Match navigation offset
-            const sectionId = current.getAttribute('id');
-            const targetLink = document.querySelector(`.nav-link[href*="${sectionId}"]`);
-            
-            if (targetLink) {
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    targetLink.classList.add('active');
-                }
-            }
-        });
-    }
-    
-    window.addEventListener('scroll', highlightActiveLink);
-
-
-    /* ==========================================================================
-       8. PDF CREDENTIAL VIEWER MODAL
+       6. PDF CREDENTIAL VIEWER MODAL
        ========================================================================== */
     const pdfModal = document.getElementById('pdf-modal');
     const modalClose = document.getElementById('modal-close');
