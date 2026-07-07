@@ -1,14 +1,14 @@
 /**
  * Saket Chawla - Portfolio Website Script
- * Replicates Sonam's Editorial Interactions:
- * Header scroll-reveal toggles, Custom Cursor with dynamic text hover indicators, 
- * Coffee widget counter popup, and PDF Modal overlay.
+ * Replicates Param Jain's desiznvalt brutalist interactions:
+ * Marquee ticker replication, custom trailing square cursors, 
+ * scroll direction toggles, and credential viewer modal overlay.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
-       1. CUSTOM ANIMATED MAGNETIC CURSOR & TOOLTIPS
+       1. CUSTOM ANIMATED MAGNETIC BLOCK CURSOR
        ========================================================================== */
     const cursorDot = document.getElementById('cursor-dot');
     const cursorRing = document.getElementById('cursor-ring');
@@ -25,12 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
             mouseX = e.clientX;
             mouseY = e.clientY;
             
-            // Move small core dot immediately
+            // Move square dot immediately
             cursorDot.style.left = `${mouseX}px`;
             cursorDot.style.top = `${mouseY}px`;
         });
 
-        // Lerping function for the larger trail ring (ease factor 0.15)
+        // Lerp loop for the square trail ring
         function animateCursorRing() {
             ringX += (mouseX - ringX) * 0.15;
             ringY += (mouseY - ringY) * 0.15;
@@ -41,13 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
             requestAnimationFrame(animateCursorRing);
         }
         
-        // Start trail loop
         animateCursorRing();
 
         // Mouse hover interactions with standard links/buttons and card tooltips
         function updateHoverListeners() {
-            // Standard hovers (buttons, navigation, icons)
-            const hoverables = document.querySelectorAll('a, button, .btn, .theme-toggle-btn, .interactive-click-widget');
+            const hoverables = document.querySelectorAll('a, button, .btn, .theme-toggle-btn, .contact-cell-link');
             hoverables.forEach(el => {
                 el.removeEventListener('mouseenter', addHoverClass);
                 el.removeEventListener('mouseleave', removeHoverClass);
@@ -55,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.addEventListener('mouseleave', removeHoverClass);
             });
 
-            // Card hovers (elements with data-cursor-text, e.g. project cards)
+            // Card hovers (displaying square "VIEW" tooltip)
             const cardHoverables = document.querySelectorAll('[data-cursor-text]');
             cardHoverables.forEach(el => {
                 el.removeEventListener('mouseenter', addCardHoverClass);
@@ -65,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Standard link hover
         function addHoverClass() {
             cursorRing.classList.add('cursor-hover');
             cursorDot.classList.add('cursor-hover');
@@ -76,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
             cursorDot.classList.remove('cursor-hover');
         }
 
-        // Card tooltip hover (displays "VIEW" bubble)
         function addCardHoverClass(e) {
             const textVal = e.currentTarget.getAttribute('data-cursor-text');
             if (cursorText && textVal) {
@@ -86,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cursorDot.classList.add('cursor-card-hover');
         }
 
+        // Remove card hover details
         function removeCardHoverClass() {
             cursorRing.classList.remove('cursor-card-hover');
             cursorDot.classList.remove('cursor-card-hover');
@@ -94,16 +91,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Initialize listeners
         updateHoverListeners();
-        
-        // Expose helper to re-bind when DOM changes
         window.rebindCursorListeners = updateHoverListeners;
     }
 
 
     /* ==========================================================================
-       2. STICKY HEADER SCROLL DIRECTION TOGGLE
+       2. INFINITE TICKER REPLICATION
+       ========================================================================== */
+    const tickerContent = document.getElementById('ticker-content');
+    if (tickerContent) {
+        // Clone ticker content once to create continuous scrolling gap fill
+        const cloneNode = tickerContent.cloneNode(true);
+        cloneNode.removeAttribute('id');
+        tickerContent.parentNode.appendChild(cloneNode);
+    }
+
+
+    /* ==========================================================================
+       3. STICKY HEADER SCROLL DIRECTION TOGGLE
        ========================================================================== */
     const header = document.getElementById('header');
     let lastScrollY = window.pageYOffset;
@@ -125,28 +131,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       3. COFFEE WIDGET INTERACTION (EASTER EGG)
-       ========================================================================== */
-    const coffeeWidget = document.getElementById('coffee-widget');
-    if (coffeeWidget) {
-        coffeeWidget.addEventListener('click', (e) => {
-            e.stopPropagation();
-            coffeeWidget.classList.toggle('active');
-        });
-
-        document.addEventListener('click', () => {
-            coffeeWidget.classList.remove('active');
-        });
-    }
-
-
-    /* ==========================================================================
        4. DARK / LIGHT THEME TOGGLE & PERSISTENCE
        ========================================================================== */
     const themeToggleBtn = document.getElementById('theme-toggle');
     const body = document.body;
 
-    // Read stored preference, default to light cream theme
     const activeTheme = localStorage.getItem('theme') || 'light';
     
     if (activeTheme === 'light') {
@@ -183,7 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileToggle.addEventListener('click', () => {
             mobileToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
-            // Disable scroll when mobile menu is active
             if (navMenu.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
@@ -191,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close menu on link clicks
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileToggle.classList.remove('active');
@@ -215,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.1, // Trigger when 10% is visible
+        threshold: 0.1,
         rootMargin: '0px 0px -40px 0px'
     });
 
@@ -271,8 +258,6 @@ document.addEventListener('DOMContentLoaded', () => {
         pdfModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
 
-        // Check if iframe handles PDF view successfully
-        // Devices like mobile browsers often fail to render PDF directly in iframe, show fallback
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         if (isMobile && fallbackContainer && pdfIframe) {
             fallbackContainer.style.display = 'flex';
@@ -288,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         pdfModal.classList.remove('active');
         pdfModal.setAttribute('aria-hidden', 'true');
-        pdfIframe.src = ''; // Clear source to save bandwidth
+        pdfIframe.src = '';
         document.body.style.overflow = 'auto';
     }
 
@@ -307,14 +292,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (pdfModal) {
         pdfModal.addEventListener('click', (e) => {
-            // Close if clicking overlay itself, not modal-card
             if (e.target === pdfModal) {
                 closeModal();
             }
         });
     }
 
-    // Close on Escape key press
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && pdfModal && pdfModal.classList.contains('active')) {
             closeModal();

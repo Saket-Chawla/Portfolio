@@ -17,14 +17,14 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="light-theme">
 
-    <!-- Custom Animated Magnetic Cursor -->
+    <!-- Custom Animated Brutalist Cursor -->
     <div class="custom-cursor-dot" id="cursor-dot"></div>
     <div class="custom-cursor-ring" id="cursor-ring">
         <span class="cursor-tooltip-text" id="cursor-text"></span>
@@ -34,16 +34,14 @@
     <header class="header" id="header">
         <div class="nav-container">
             <a href="#" class="logo">
-                <span class="logo-bracket">&lt;</span>Saket<span class="logo-dot">.</span>chawla<span class="logo-bracket">/&gt;</span>
+                Saket Chawla<span class="logo-dot">.</span>
             </a>
 
             <!-- Desktop Nav Menu -->
             <nav class="nav-menu" id="nav-menu">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-                    <li class="nav-item"><a href="#work" class="nav-link">Work</a></li>
-                    <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
-                    <li class="nav-item"><a href="#testimonials" class="nav-link">Reviews</a></li>
+                    <li class="nav-item"><a href="#home" class="nav-link active">Work</a></li>
+                    <li class="nav-item"><a href="#experience" class="nav-link">About me</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -82,36 +80,29 @@
         <!-- Hero Section -->
         <section class="hero-section" id="home">
             <div class="container hero-container">
+                <!-- Status Badge -->
                 <div class="hero-badge reveal-slide-up">
                     <span class="badge-dot"></span>
                     <span>Open to Work</span>
                 </div>
                 
+                <!-- Headline in Chakra Petch -->
                 <h1 class="hero-greeting reveal-slide-up" style="transition-delay: 0.1s;">
                     Engineering with <span>intention.</span><br>Across everything.
                 </h1>
                 
                 <h2 class="hero-subtitle reveal-slide-up" style="transition-delay: 0.2s;">
-                    Best viewed on a bigger screen. For now, at least.
+                    Please open the site on laptop for better experience!
                 </h2>
                 
                 <p class="hero-description reveal-slide-up" style="transition-delay: 0.3s;">
                     Hi, I'm Saket Chawla. I build scalable software that bridges the gap between complex machine learning models and high-fidelity web experiences. Specializing in RAG workflows, LLM orchestration, and core full-stack software development.
                 </p>
-                
-                <!-- Interactive click widget -->
-                <div class="interactive-click-widget reveal-slide-up" id="coffee-widget" style="transition-delay: 0.4s;">
-                    <span class="widget-icon">☕</span>
-                    <span class="widget-text">I code better with good coffee.</span>
-                    <span class="widget-action">(Click)</span>
-                    <div class="widget-popup-card" id="coffee-popup">
-                        <p><strong>Stats:</strong> 1200+ cups consumed, 1.2M lines of code compiled, 0 production crashes (mostly).</p>
-                    </div>
-                </div>
 
-                <div class="hero-cta reveal-slide-up" style="transition-delay: 0.5s;">
+                <!-- Actions -->
+                <div class="hero-cta reveal-slide-up" style="transition-delay: 0.4s;">
                     <a href="#work" class="btn btn-primary">
-                        Selected Work
+                        Featured Work
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-arrow">
                             <line x1="7" y1="17" x2="17" y2="7"></line>
                             <polyline points="7 7 17 7 17 17"></polyline>
@@ -127,57 +118,75 @@
                     </a>
                 </div>
             </div>
+
+            <!-- Infinite Scroll Ticker Marquee -->
+            <div class="ticker-marquee-wrapper reveal-slide-up" style="transition-delay: 0.5s;">
+                <div class="ticker-marquee-content" id="ticker-content">
+                    <span>TYPOGRAPHY</span>
+                    <span>•</span>
+                    <span>DESIGN</span>
+                    <span>•</span>
+                    <span>MACHINE LEARNING</span>
+                    <span>•</span>
+                    <span>GENERATIVE AI</span>
+                    <span>•</span>
+                    <span>FULL STACK</span>
+                    <span>•</span>
+                    <span>RAG WORKFLOWS</span>
+                    <span>•</span>
+                    <span>LLM ORCHESTRATION</span>
+                    <span>•</span>
+                </div>
+            </div>
             
-            <a href="#philosophy" class="scroll-indicator" aria-label="Scroll down">
+            <a href="#work" class="scroll-indicator" aria-label="Scroll down">
                 <span class="scroll-mouse">
                     <span class="scroll-wheel"></span>
                 </span>
             </a>
         </section>
 
-        <!-- Philosophy Section -->
-        <section class="philosophy-section" id="philosophy">
-            <div class="container philosophy-container">
-                <h2 class="philosophy-lead reveal-slide-up">
-                    I don't just write code.<br><span>I engineer solutions.</span>
-                </h2>
-                <p class="philosophy-body reveal-slide-up" style="transition-delay: 0.1s;">
-                    My journey in tech combines rigorous training in AI/ML from MITS Academy and hands-on software building. During my 10-month internship at Growth Flow Media, I transitioned from frontend features into a core full-stack developer role, taking complete ownership of backend APIs, databases, and client integrations.
-                </p>
-            </div>
-        </section>
-
-        <!-- Work Section -->
+        <!-- Work Section (Industrial Brutalist Grid) -->
         <section class="work-section section-padding" id="work">
             <div class="container">
                 <div class="section-header reveal-fade">
                     <div>
-                        <span class="section-subtitle">Work that made a dent</span>
-                        <h2 class="section-title">Selected Projects</h2>
+                        <span class="section-subtitle">Featured</span>
+                        <h2 class="section-title">Selected Case Studies</h2>
                     </div>
                 </div>
 
-                <div class="projects-grid-editorial">
+                <div class="projects-grid-brutalist">
                     <!-- Project 1: WhatsApp Chat Analyzer -->
-                    <article class="project-editorial-card reveal-slide-up" data-cursor-text="VIEW">
-                        <div class="project-meta-header">
-                            <span class="project-index">01/</span>
-                            <time class="project-year">2026</time>
+                    <article class="project-brutalist-card reveal-slide-up" data-cursor-text="VIEW">
+                        <div class="card-archive-header">
+                            <span class="card-archive-no">[No. 001]</span>
+                            <span class="card-archive-tag">Data Science &amp; NLP</span>
                         </div>
-                        <h3 class="project-name-title">WhatsApp Chat Analyzer</h3>
-                        <p class="project-summary-text">
-                            A production-ready data science web application offering multi-level interactive visualizations, text statistics, sentiment indices, and conversational network topologies from raw export text files.
-                        </p>
-                        <ul class="project-bullet-list">
-                            <li>Developed regex parsing engines mapping raw message blocks to structured dataframes.</li>
-                            <li>Engineered natural language tokenizers calculating timeline sentiment momentum scores.</li>
-                            <li>Designed user interaction heatmaps showing conversational activity peaks.</li>
-                        </ul>
-                        <div class="project-tags-wrapper">
-                            <span class="tech-tag">Python 3</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">Seaborn</span>
-                            <span class="tech-tag">Streamlit</span>
+                        <div class="card-main-content">
+                            <h3 class="card-archive-title">WhatsApp Chat Analyzer</h3>
+                            <p class="card-archive-desc">
+                                A production-ready data science web application offering multi-level interactive visualizations, text statistics, sentiment indices, and conversational network topologies from raw export text files.
+                            </p>
+                            <ul class="card-bullet-list">
+                                <li>Developed regex parsing engines mapping raw message blocks to structured dataframes.</li>
+                                <li>Engineered natural language tokenizers calculating timeline sentiment momentum scores.</li>
+                                <li>Designed user interaction heatmaps showing conversational activity peaks.</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer-details">
+                            <div class="meta-row">
+                                <span class="meta-label">Category -</span>
+                                <span class="meta-value">Visualizations &amp; Sentiment NLP</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-label">Tools -</span>
+                                <span class="meta-value">Python, Pandas, Seaborn, Streamlit</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-label">Year -</span>
+                                <span class="meta-value">2026</span>
+                            </div>
                         </div>
                         <div class="project-links-row">
                             <a href="#" class="btn btn-secondary-sm disabled-link" aria-disabled="true">Live View</a>
@@ -186,24 +195,35 @@
                     </article>
 
                     <!-- Project 2: JobFit AI -->
-                    <article class="project-editorial-card reveal-slide-up" data-cursor-text="VIEW" style="transition-delay: 0.1s;">
-                        <div class="project-meta-header">
-                            <span class="project-index">02/</span>
-                            <time class="project-year">2026</time>
+                    <article class="project-brutalist-card reveal-slide-up" data-cursor-text="VIEW" style="transition-delay: 0.1s;">
+                        <div class="card-archive-header">
+                            <span class="card-archive-no">[No. 002]</span>
+                            <span class="card-archive-tag">Generative AI / RAG</span>
                         </div>
-                        <h3 class="project-name-title">JobFit AI</h3>
-                        <p class="project-summary-text">
-                            An intelligent system parsing PDF resumes against target descriptions. Generates percentage matches, categorizes missing skills, and suggests specific resume rewrite modifications.
-                        </p>
-                        <ul class="project-bullet-list">
-                            <li>Built semantic parsing workflows leveraging LangChain and Gemini models.</li>
-                            <li>Implemented RAG matching to highlight matching nodes and gap variables.</li>
-                            <li>Integrated secure PDF text extractors formatting output schemas in Streamlit.</li>
-                        </ul>
-                        <div class="project-tags-wrapper">
-                            <span class="tech-tag">LangChain</span>
-                            <span class="tech-tag">Google Gemini</span>
-                            <span class="tech-tag">Streamlit</span>
+                        <div class="card-main-content">
+                            <h3 class="card-archive-title">JobFit AI</h3>
+                            <p class="card-archive-desc">
+                                An intelligent system parsing PDF resumes against target descriptions. Generates percentage matches, categorizes missing skills, and suggests specific resume rewrite modifications.
+                            </p>
+                            <ul class="card-bullet-list">
+                                <li>Built semantic parsing workflows leveraging LangChain and Gemini models.</li>
+                                <li>Implemented RAG matching to highlight matching nodes and gap variables.</li>
+                                <li>Integrated secure PDF text extractors formatting output schemas in Streamlit.</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer-details">
+                            <div class="meta-row">
+                                <span class="meta-label">Category -</span>
+                                <span class="meta-value">LLM Parsing &amp; Recruitment RAG</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-label">Tools -</span>
+                                <span class="meta-value">LangChain, Gemini APIs, Streamlit</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-label">Year -</span>
+                                <span class="meta-value">2026</span>
+                            </div>
                         </div>
                         <div class="project-links-row">
                             <a href="#" class="btn btn-secondary-sm disabled-link" aria-disabled="true">Streamlit Cloud</a>
@@ -212,23 +232,35 @@
                     </article>
 
                     <!-- Project 3: Land-Graph -->
-                    <article class="project-editorial-card reveal-slide-up" data-cursor-text="VIEW" style="transition-delay: 0.2s;">
-                        <div class="project-meta-header">
-                            <span class="project-index">03/</span>
-                            <time class="project-year">2026</time>
+                    <article class="project-brutalist-card reveal-slide-up" data-cursor-text="VIEW" style="transition-delay: 0.2s;">
+                        <div class="card-archive-header">
+                            <span class="card-archive-no">[No. 003]</span>
+                            <span class="card-archive-tag">Full Stack / Simulation</span>
                         </div>
-                        <h3 class="project-name-title">Land-Graph - Graph Visualizer</h3>
-                        <p class="project-summary-text">
-                            Interactive browser-based simulator generating dynamic grid, ring, and star network graph structures to visually represent AI agent communication states.
-                        </p>
-                        <ul class="project-bullet-list">
-                            <li>Implemented Dijkstra's algorithm for real-time pathfinding visualization.</li>
-                            <li>Created custom agent-flow animations using hardware-accelerated SVG rendering.</li>
-                            <li>Optimized graph layout calculations in the main UI thread.</li>
-                        </ul>
-                        <div class="project-tags-wrapper">
-                            <span class="tech-tag">HTML5 / SVG</span>
-                            <span class="tech-tag">Vanilla JS</span>
+                        <div class="card-main-content">
+                            <h3 class="card-archive-title">Land-Graph Visualizer</h3>
+                            <p class="card-archive-desc">
+                                Interactive browser-based simulator generating dynamic grid, ring, and star network graph structures to visually represent AI agent communication states.
+                            </p>
+                            <ul class="card-bullet-list">
+                                <li>Implemented Dijkstra's algorithm for real-time pathfinding visualization.</li>
+                                <li>Created custom agent-flow animations using hardware-accelerated SVG rendering.</li>
+                                <li>Optimized graph layout calculations in the main UI thread.</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer-details">
+                            <div class="meta-row">
+                                <span class="meta-label">Category -</span>
+                                <span class="meta-value">Dijkstra Simulation &amp; Network SVG</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-label">Tools -</span>
+                                <span class="meta-value">HTML5, CSS3, SVG, Vanilla JS</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-label">Year -</span>
+                                <span class="meta-value">2026</span>
+                            </div>
                         </div>
                         <div class="project-links-row">
                             <a href="#" class="btn btn-secondary-sm disabled-link" aria-disabled="true">Static View</a>
@@ -239,86 +271,103 @@
             </div>
         </section>
 
-        <!-- Experience Section -->
+        <!-- About/Experience Section (Process & Timeline) -->
         <section class="experience-section section-padding" id="experience">
             <div class="container">
                 <div class="section-header reveal-fade">
                     <div>
-                        <span class="section-subtitle">The Journey</span>
-                        <h2 class="section-title">Where I've been.</h2>
+                        <span class="section-subtitle">About me</span>
+                        <h2 class="section-title">Clean Grid, Clever Ideas.</h2>
                     </div>
                 </div>
 
-                <div class="experience-grid-editorial">
-                    <div class="timeline-left-column reveal-slide-left">
-                        <p class="experience-intro-text">
-                            From training neural networks in academic research structures to deploying and debugging full-stack web architectures for real client projects.
-                        </p>
-                        <div style="margin-top: 3.5rem;">
-                            <a href="assets/pdf/Saket_Chawla_Resume.pdf" class="btn btn-primary" download>
-                                Get the full story
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="download-icon" style="width: 1rem; height: 1rem; margin-left: 0.5rem;">
-                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                    <polyline points="7 10 12 15 17 10"></polyline>
-                                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                                </svg>
-                            </a>
+                <div class="about-editorial-grid">
+                    <!-- Left Column: Biography & Process -->
+                    <div class="about-left-editorial reveal-slide-left">
+                        <span class="column-micro-label">/// Philosophy</span>
+                        <h3 class="about-editorial-lead">Process Over Panic.</h3>
+                        
+                        <div class="philosophy-steps-list">
+                            <div class="philosophy-step-item">
+                                <span class="step-num">01</span>
+                                <div class="step-content">
+                                    <strong>Logical Architecture:</strong> I map system workflows, pipeline nodes, and schemas before typing a line of code.
+                                </div>
+                            </div>
+                            <div class="philosophy-step-item">
+                                <span class="step-num">02</span>
+                                <div class="step-content">
+                                    <strong>Coffee &amp; Focus:</strong> I enjoy solving complex back-end bugs, optimization loops, and API middleware bottlenecks.
+                                </div>
+                            </div>
+                            <div class="philosophy-step-item">
+                                <span class="step-num">03</span>
+                                <div class="step-content">
+                                    <strong>Designs that know when to stop:</strong> I build clean interfaces that prioritize speed, utility, and readable information.
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="timeline-right-column reveal-slide-right">
-                        <!-- Timeline Item 1 -->
-                        <div class="timeline-row-item">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-info-content">
-                                <div class="timeline-info-header">
-                                    <h3 class="timeline-role-title">Full Stack Developer Intern</h3>
-                                    <span class="timeline-company-name">Growth Flow Media</span>
-                                    <span class="timeline-period-dates">June 2025 - Present (10 Months)</span>
-                                </div>
-                                <span class="timeline-meta-label">B2B SaaS / Growth Marketing</span>
-                                <ul class="timeline-bullet-details">
-                                    <li>Automated customer data acquisition pipelines, boosting execution speed by 35%.</li>
-                                    <li>Built robust Node/Express endpoints connected to PostgreSQL database layers.</li>
-                                    <li>Implemented interactive data panels reducing dashboard rendering loads.</li>
-                                    <li>Debugged API middleware layers reducing connection timeouts.</li>
-                                </ul>
+                    <!-- Right Column: Skills & Experience Grid -->
+                    <div class="about-right-editorial reveal-slide-right">
+                        <span class="column-micro-label">/// Technical Stack</span>
+                        
+                        <div class="skills-catalog-grid">
+                            <div class="skills-catalog-card">
+                                <h4>Programming</h4>
+                                <p>Python, JavaScript, SQL, HTML5, CSS3</p>
+                            </div>
+                            <div class="skills-catalog-card">
+                                <h4>AI &amp; ML</h4>
+                                <p>TensorFlow, PyTorch, Scikit-Learn, OpenCV, NLP</p>
+                            </div>
+                            <div class="skills-catalog-card">
+                                <h4>Generative AI</h4>
+                                <p>LangChain, LangGraph, Gemini, OpenAI, VectorDBs</p>
+                            </div>
+                            <div class="skills-catalog-card">
+                                <h4>Web &amp; DevOps</h4>
+                                <p>Node.js, Express, React, Vite, Git, MongoDB, Postgres</p>
                             </div>
                         </div>
 
-                        <!-- Timeline Item 2 -->
-                        <div class="timeline-row-item">
-                            <div class="timeline-marker"></div>
-                            <div class="timeline-info-content">
-                                <div class="timeline-info-header">
-                                    <h3 class="timeline-role-title">AI & Machine Learning Scholar</h3>
-                                    <span class="timeline-company-name">MITS Academy</span>
-                                    <span class="timeline-period-dates">Oct 2024 - May 2025</span>
+                        <!-- Work Experiences -->
+                        <span class="column-micro-label" style="margin-top: 4rem; display: block;">/// Experiences</span>
+                        
+                        <div class="experiences-table-brutalist">
+                            <div class="exp-table-row">
+                                <div class="exp-cell-org">Growth Flow Media</div>
+                                <div class="exp-cell-role">
+                                    <strong>Full Stack Developer Intern</strong>
+                                    <span>B2B SaaS API automations, database queries, and Node migrations.</span>
                                 </div>
-                                <span class="timeline-meta-label">Specialized Training Program</span>
-                                <ul class="timeline-bullet-details">
-                                    <li>Trained convolutional networks for predictive target matching modules.</li>
-                                    <li>Engineered custom pipeline transformers executing data cleanup and imputation.</li>
-                                    <li>Formulated classification matrices scoring precision and F1 values.</li>
-                                    <li>Compiled NLP structures resolving custom text clustering.</li>
-                                </ul>
+                                <div class="exp-cell-date">2025 - Present</div>
+                            </div>
+                            <div class="exp-table-row">
+                                <div class="exp-cell-org">MITS Academy</div>
+                                <div class="exp-cell-role">
+                                    <strong>AI &amp; Machine Learning Scholar</strong>
+                                    <span>Specialized training on prediction models, classification, and text data NLP.</span>
+                                </div>
+                                <div class="exp-cell-date">2024 - 2025</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Academic and Industry Credentials -->
-                <div class="credentials-section-wrapper content-section">
-                    <span class="section-subtitle">Credentials</span>
+                <!-- Academic Credentials Grid -->
+                <div class="credentials-brutalist-section content-section">
+                    <span class="section-subtitle">Achievements</span>
                     <h2 class="section-title">Certifications & Experience Letters</h2>
                     
-                    <div class="credentials-list-editorial">
-                        <!-- Credential 1 -->
-                        <div class="credential-editorial-row reveal-slide-up">
-                            <div class="credential-issuer-label">MITS Academy</div>
-                            <div class="credential-info-block">
-                                <h3 class="credential-title-name">Post Graduate Program in Artificial Intelligence & Machine Learning</h3>
-                                <p class="credential-meta-details">Issued: May 2025 | ID: MITS-AIML-2025-084</p>
+                    <div class="credentials-grid-brutalist">
+                        <!-- Certificate 1 -->
+                        <div class="credential-brutalist-row reveal-slide-up">
+                            <div class="cred-org-label">MITS Academy</div>
+                            <div class="cred-main-info">
+                                <h3 class="cred-title-title">Post Graduate Program in Artificial Intelligence & Machine Learning</h3>
+                                <p class="cred-meta-line">Issued: May 2025 | ID: MITS-AIML-2025-084</p>
                                 <button class="btn btn-secondary-sm open-pdf-btn" data-pdf="assets/pdf/Saket_Chawla_AIML_Certificate_MITS_Academy.pdf">
                                     View Document
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-arrow" style="width: 0.9rem; height: 0.9rem; margin-left: 0.35rem;">
@@ -329,12 +378,12 @@
                             </div>
                         </div>
 
-                        <!-- Credential 2 -->
-                        <div class="credential-editorial-row reveal-slide-up" style="transition-delay: 0.1s;">
-                            <div class="credential-issuer-label">Growth Flow Media</div>
-                            <div class="credential-info-block">
-                                <h3 class="credential-title-name">Software Engineering Internship Experience Letter</h3>
-                                <p class="credential-meta-details">Issued: Present | Reference: GFM-INT-2025-SF</p>
+                        <!-- Certificate 2 -->
+                        <div class="credential-brutalist-row reveal-slide-up" style="transition-delay: 0.1s;">
+                            <div class="cred-org-label">Growth Flow</div>
+                            <div class="cred-main-info">
+                                <h3 class="cred-title-title">Software Engineering Internship Experience Letter</h3>
+                                <p class="cred-meta-line">Issued: Present | Reference: GFM-INT-2025-SF</p>
                                 <button class="btn btn-secondary-sm open-pdf-btn" data-pdf="assets/pdf/Saket_Chawla_Experience_Letter_Growth_Flow_Media.pdf">
                                     View Document
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-arrow" style="width: 0.9rem; height: 0.9rem; margin-left: 0.35rem;">
@@ -346,41 +395,33 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Testimonials Section -->
-        <section class="testimonials-section section-padding" id="testimonials">
-            <div class="container">
-                <div class="section-header reveal-fade">
-                    <div>
-                        <span class="section-subtitle">Endorsements</span>
-                        <h2 class="section-title">Don't take my word for it.</h2>
+                <!-- Testimonials Grid -->
+                <div class="testimonials-brutalist-section content-section">
+                    <span class="section-subtitle">Endorsements</span>
+                    <h2 class="section-title">Don't take my word for it.</h2>
+                    
+                    <div class="testimonials-grid-brutalist">
+                        <blockquote class="testimonial-brutalist-card reveal-slide-up">
+                            <p class="testimonial-quote">
+                                "Saket has a genuine pulse on the latest tech and trends, making him an asset to any forward-thinking team. Beyond his skills, our brainstorming sessions were a highlight for me; they were a perfect blend of creative intellect and genuine fun."
+                            </p>
+                            <cite class="testimonial-author">
+                                <strong>Karan Jain</strong>
+                                <span>Art Director</span>
+                            </cite>
+                        </blockquote>
+
+                        <blockquote class="testimonial-brutalist-card reveal-slide-up" style="transition-delay: 0.1s;">
+                            <p class="testimonial-quote">
+                                "Having worked with Saket, I can say that he is a self-motivated person and keeps digging at the problem until he finds a solution. Having him on the team is such a relief as deadlines becomes a non-issue due to his disciplined work ethic."
+                            </p>
+                            <cite class="testimonial-author">
+                                <strong>Amal Mishra</strong>
+                                <span>Product Designer</span>
+                            </cite>
+                        </blockquote>
                     </div>
-                </div>
-
-                <div class="testimonials-grid-editorial">
-                    <!-- Quote 1 -->
-                    <blockquote class="endorsement-editorial-card reveal-slide-up">
-                        <p class="endorsement-quote-text">
-                            "Saket has a genuine pulse on the latest tech and trends, making him an asset to any forward-thinking team. Beyond his skills, our brainstorming sessions were a highlight for me; they were a perfect blend of creative intellect and genuine fun."
-                        </p>
-                        <cite class="endorsement-author-info">
-                            <strong>Karan Jain</strong>
-                            <span>Art Director</span>
-                        </cite>
-                    </blockquote>
-
-                    <!-- Quote 2 -->
-                    <blockquote class="endorsement-editorial-card reveal-slide-up" style="transition-delay: 0.15s;">
-                        <p class="endorsement-quote-text">
-                            "Having worked with Saket, I can say that he is a self-motivated person and keeps digging at the problem until he finds a solution. Having him on the team is such a relief as deadlines becomes a non-issue due to his disciplined work ethic."
-                        </p>
-                        <cite class="endorsement-author-info">
-                            <strong>Amal Mishra</strong>
-                            <span>Product Designer</span>
-                        </cite>
-                    </blockquote>
                 </div>
             </div>
         </section>
@@ -388,38 +429,31 @@
         <!-- Contact Section -->
         <section class="contact-section section-padding" id="contact">
             <div class="container">
-                <div class="contact-card-editorial reveal-slide-up">
-                    <span class="section-subtitle">Get in Touch</span>
-                    <h2 class="contact-headline">Still here? Let's make something.</h2>
-                    <p class="contact-lead-desc">
-                        I am open to full-time engineering roles, creative collaborations, or discussing technical problems. Reach out directly and let's construct solutions.
-                    </p>
+                <div class="contact-card-brutalist reveal-slide-up">
+                    <span class="section-subtitle">Experience</span>
+                    <h2 class="contact-headline">Like what you see? Contact me!</h2>
                     
-                    <div class="contact-editorial-links-grid">
-                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chawlasaket4271@gmail.com" target="_blank" class="contact-link-row">
-                            <span class="contact-label">Email</span>
-                            <span class="contact-value">chawlasaket4271@gmail.com</span>
+                    <div class="contact-grid-cells">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chawlasaket4271@gmail.com" target="_blank" class="contact-cell-link">
+                            <span class="cell-label">Gmail</span>
+                            <span class="cell-value">chawlasaket4271@gmail.com</span>
                         </a>
-
-                        <a href="tel:+919878841320" class="contact-link-row">
-                            <span class="contact-label">Call</span>
-                            <span class="contact-value">+91 98788 41320</span>
+                        <a href="tel:+919878841320" class="contact-cell-link">
+                            <span class="cell-label">Call</span>
+                            <span class="cell-value">+91 98788 41320</span>
                         </a>
-
-                        <a href="https://www.linkedin.com/in/wakeupsaket/" target="_blank" class="contact-link-row">
-                            <span class="contact-label">LinkedIn</span>
-                            <span class="contact-value">linkedin.com/in/wakeupsaket</span>
+                        <a href="https://www.linkedin.com/in/wakeupsaket/" target="_blank" class="contact-cell-link">
+                            <span class="cell-label">Linkedin</span>
+                            <span class="cell-value">linkedin.com/in/wakeupsaket</span>
                         </a>
-
-                        <a href="https://github.com/Saket-Chawla" target="_blank" class="contact-link-row">
-                            <span class="contact-label">GitHub</span>
-                            <span class="contact-value">github.com/Saket-Chawla</span>
+                        <a href="https://github.com/Saket-Chawla" target="_blank" class="contact-cell-link">
+                            <span class="cell-label">Github</span>
+                            <span class="cell-value">github.com/Saket-Chawla</span>
                         </a>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
 
     <!-- Footer -->
@@ -429,7 +463,7 @@
                 &copy; 2026 Saket Chawla. All rights reserved.
             </p>
             <p class="design-by">
-                Designed & built by Saket. Coffee supervised.
+                Made with love, coffee and lots of mix emotions!
             </p>
         </div>
     </footer>
