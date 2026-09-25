@@ -132,24 +132,86 @@ def build_pdf(filename):
         story.append(Paragraph(f"<b>{title}</b>", section_heading_style))
         story.append(HRFlowable(width="100%", thickness=0.75, color=colors.black, spaceBefore=1, spaceAfter=5))
 
-    # --- SUMMARY ---
-    add_section_header("SUMMARY")
+    # --- PROFESSIONAL SUMMARY ---
+    add_section_header("PROFESSIONAL SUMMARY")
     summary_p = (
-        "Full-stack developer with a broad programming foundation spanning React/Next.js frontend development, "
-        "Python backend and data work, and applied Generative AI (LangChain, Google Gemini). Experience building and "
-        "deploying complete web applications end-to-end, from UI to API integration to production deployment. Currently "
-        "pursuing an MCA specializing in Cybersecurity. Seeking entry-level Software Developer / Full-Stack roles."
+        "Software Developer skilled in React, Next.js, JavaScript, Python, and Generative AI integrations (LangChain, Gemini API). "
+        "Experienced in building modern frontend interfaces, developing REST APIs, and deploying full-stack web applications on Vercel "
+        "and Streamlit Cloud. Currently pursuing an MCA in Cybersecurity while seeking entry-level Software Developer or Full-Stack Engineer roles."
     )
     story.append(Paragraph(summary_p, body_style))
+
+    # --- TECHNICAL SKILLS ---
+    add_section_header("TECHNICAL SKILLS")
+    skills = [
+        ("Languages:", "Python, JavaScript, SQL, HTML5, CSS3"),
+        ("Frontend & Web:", "React, Next.js, Vite, Tailwind CSS, REST APIs"),
+        ("Backend & AI Frameworks:", "FastAPI, LangChain, Google Gemini API, OpenAI API"),
+        ("Developer Tools:", "Git, GitHub, Vercel, Streamlit Cloud, AntiGravity, Claude Code, VS Code")
+    ]
+    for label, val in skills:
+        p_text = f"<b>{label}</b> {val}"
+        story.append(Paragraph(p_text, ParagraphStyle('SkillLine', parent=body_style, leading=13.5, spaceAfter=2)))
+
+    # --- PROJECTS ---
+    add_section_header("PROJECTS")
+
+    # Project 1: ResuFlex AI
+    proj1_left = "<b>ResuFlex AI</b> | <b>Python, LangChain, Google Gemini, Streamlit</b>"
+    proj1_right = '<a href="https://resuflex-ai.vercel.app" color="blue">resuflex-ai.vercel.app</a>'
+    t_proj1 = Table([[Paragraph(proj1_left, entry_left_bold), Paragraph(proj1_right, entry_right_bold)]], colWidths=[380, 160])
+    t_proj1.setStyle(TableStyle([
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('LEFTPADDING', (0,0), (-1,-1), 0),
+        ('RIGHTPADDING', (0,0), (-1,-1), 0),
+        ('TOPPADDING', (0,0), (-1,-1), 0),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 2),
+    ]))
+    story.append(t_proj1)
+    story.append(Paragraph("&bull;&nbsp;&nbsp;Developed an AI-driven resume optimization application that analyzes resume content and provides structured ATS match scoring against targeted job descriptions.", bullet_style))
+    story.append(Paragraph("&bull;&nbsp;&nbsp;Engineered prompt and parser pipelines using Google Gemini API and LangChain to identify technical skill gaps and recommend targeted phrasing enhancements.", bullet_style))
+    story.append(Paragraph("&bull;&nbsp;&nbsp;Deployed an interactive web interface on Streamlit Cloud with secure API key environment management and input validation.", bullet_style))
+    story.append(Spacer(1, 4))
+
+    # Project 2: JobFit AI
+    proj2_left = "<b>JobFit AI – Resume Analyzer</b> | <b>Python, LangChain, Google Gemini, Streamlit</b>"
+    proj2_right = '<a href="https://jobfitapp.streamlit.app" color="blue">jobfitapp.streamlit.app</a>'
+    t_proj2 = Table([[Paragraph(proj2_left, entry_left_bold), Paragraph(proj2_right, entry_right_bold)]], colWidths=[380, 160])
+    t_proj2.setStyle(TableStyle([
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('LEFTPADDING', (0,0), (-1,-1), 0),
+        ('RIGHTPADDING', (0,0), (-1,-1), 0),
+        ('TOPPADDING', (0,0), (-1,-1), 0),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 2),
+    ]))
+    story.append(t_proj2)
+    story.append(Paragraph("&bull;&nbsp;&nbsp;Built a full-stack Generative AI tool that evaluates resumes against job listings using semantic embedding evaluation alongside ATS keyword density checks.", bullet_style))
+    story.append(Paragraph("&bull;&nbsp;&nbsp;Configured custom prompt workflows with LangChain to generate tailored actionable feedback reports for job applicants.", bullet_style))
+    story.append(Paragraph("&bull;&nbsp;&nbsp;Published the app to Streamlit Cloud, setting up robust secret management and production error handling.", bullet_style))
+    story.append(Spacer(1, 4))
+
+    # Project 3: TaskFlow
+    proj3_left = "<b>TaskFlow – Task Management App</b> | <b>React, JavaScript, Vite, Tailwind CSS</b>"
+    proj3_right = '<a href="https://taskflow-pink-six.vercel.app" color="blue">taskflow-pink-six.vercel.app</a>'
+    t_proj3 = Table([[Paragraph(proj3_left, entry_left_bold), Paragraph(proj3_right, entry_right_bold)]], colWidths=[380, 160])
+    t_proj3.setStyle(TableStyle([
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('LEFTPADDING', (0,0), (-1,-1), 0),
+        ('RIGHTPADDING', (0,0), (-1,-1), 0),
+        ('TOPPADDING', (0,0), (-1,-1), 0),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 2),
+    ]))
+    story.append(t_proj3)
+    story.append(Paragraph("&bull;&nbsp;&nbsp;Created a modern responsive task management system featuring dynamic search, real-time status filtering, and task lifecycle tracking.", bullet_style))
+    story.append(Paragraph("&bull;&nbsp;&nbsp;Implemented persistent dark/light theme switching and built a custom reusable visual component set with Tailwind CSS.", bullet_style))
 
     # --- EDUCATION ---
     add_section_header("EDUCATION")
     
     edu1_data = [
-        [Paragraph("Amity University Online", entry_left_bold), Paragraph("Jul 2026 -- Present", entry_right_bold)],
-        [Paragraph("Master of Computer Applications (MCA) -- Specialization in Cybersecurity", entry_left_italic), Paragraph("India", entry_right_italic)]
+        [Paragraph("Amity University Online &mdash; Master of Computer Applications (MCA), Cybersecurity", entry_left_bold), Paragraph("Jul 2026 &ndash; Present", entry_right_bold)],
     ]
-    t_edu1 = Table(edu1_data, colWidths=[380, 160])
+    t_edu1 = Table(edu1_data, colWidths=[400, 140])
     t_edu1.setStyle(TableStyle([
         ('VALIGN', (0,0), (-1,-1), 'TOP'),
         ('LEFTPADDING', (0,0), (-1,-1), 0),
@@ -158,13 +220,11 @@ def build_pdf(filename):
         ('BOTTOMPADDING', (0,0), (-1,-1), 1),
     ]))
     story.append(t_edu1)
-    story.append(Spacer(1, 4))
 
     edu2_data = [
-        [Paragraph("DAV College, Amritsar", entry_left_bold), Paragraph("Oct 2022 -- Jul 2025", entry_right_bold)],
-        [Paragraph("Bachelor of Computer Applications (BCA)", entry_left_italic), Paragraph("India", entry_right_italic)]
+        [Paragraph("DAV College, Amritsar &mdash; Bachelor of Computer Applications (BCA)", entry_left_bold), Paragraph("Oct 2022 &ndash; Jul 2025", entry_right_bold)],
     ]
-    t_edu2 = Table(edu2_data, colWidths=[380, 160])
+    t_edu2 = Table(edu2_data, colWidths=[400, 140])
     t_edu2.setStyle(TableStyle([
         ('VALIGN', (0,0), (-1,-1), 'TOP'),
         ('LEFTPADDING', (0,0), (-1,-1), 0),
@@ -174,72 +234,22 @@ def build_pdf(filename):
     ]))
     story.append(t_edu2)
 
-    # --- PROJECTS ---
-    add_section_header("PROJECTS")
-
-    # Project 1: TaskFlow
-    proj1_left = "<b>TaskFlow -- Task Management App</b> | <b>React, Vite, Tailwind CSS, shadcn/ui, Framer Motion</b>"
-    proj1_right = "Mar 2026 -- Apr 2026"
-    t_proj1 = Table([[Paragraph(proj1_left, entry_left_bold), Paragraph(proj1_right, entry_right_bold)]], colWidths=[415, 125])
-    t_proj1.setStyle(TableStyle([
-        ('VALIGN', (0,0), (-1,-1), 'TOP'),
-        ('LEFTPADDING', (0,0), (-1,-1), 0),
-        ('RIGHTPADDING', (0,0), (-1,-1), 0),
-        ('TOPPADDING', (0,0), (-1,-1), 0),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 2),
-    ]))
-    story.append(t_proj1)
-    story.append(Paragraph("&bull;&nbsp;&nbsp;Engineered a full task management workflow (create, edit, delete, instant search, and a progress-tracking dashboard) from scratch using React and Vite.", bullet_style))
-    story.append(Paragraph("&bull;&nbsp;&nbsp;Designed a persistent dark/light mode system and a reusable shadcn/ui + Tailwind CSS component library, cutting UI rebuild time on new features.", bullet_style))
-    story.append(Spacer(1, 4))
-
-    # Project 2: JobFit AI
-    proj2_left = "<b>JobFit AI -- Resume Analyzer</b> | <b>Python, LangChain, Google Gemini, Streamlit</b>"
-    proj2_right = "Jan 2026 -- Feb 2026"
-    t_proj2 = Table([[Paragraph(proj2_left, entry_left_bold), Paragraph(proj2_right, entry_right_bold)]], colWidths=[415, 125])
-    t_proj2.setStyle(TableStyle([
-        ('VALIGN', (0,0), (-1,-1), 'TOP'),
-        ('LEFTPADDING', (0,0), (-1,-1), 0),
-        ('RIGHTPADDING', (0,0), (-1,-1), 0),
-        ('TOPPADDING', (0,0), (-1,-1), 0),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 2),
-    ]))
-    story.append(t_proj2)
-    story.append(Paragraph("&bull;&nbsp;&nbsp;Architected a full-stack Generative AI application that scores resumes against job descriptions using Google Gemini 2.5 and LangChain, combining semantic matching with ATS keyword analysis.", bullet_style))
-    story.append(Paragraph("&bull;&nbsp;&nbsp;Engineered the prompt pipeline to replicate real ATS scoring logic, and deployed it on Streamlit Cloud with secure API key handling and production-grade error handling.", bullet_style))
-    story.append(Spacer(1, 4))
-
-    # Project 3: Langagraph
-    proj3_left = "<b>Langagraph: Graph &amp; Agent Visualizer</b> | <b>HTML5, CSS3, SVG</b>"
-    proj3_right = "Dec 2025 -- Jan 2026"
-    t_proj3 = Table([[Paragraph(proj3_left, entry_left_bold), Paragraph(proj3_right, entry_right_bold)]], colWidths=[415, 125])
-    t_proj3.setStyle(TableStyle([
-        ('VALIGN', (0,0), (-1,-1), 'TOP'),
-        ('LEFTPADDING', (0,0), (-1,-1), 0),
-        ('RIGHTPADDING', (0,0), (-1,-1), 0),
-        ('TOPPADDING', (0,0), (-1,-1), 0),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 2),
-    ]))
-    story.append(t_proj3)
-    story.append(Paragraph("&bull;&nbsp;&nbsp;Built an interactive browser-based graph simulation engine supporting grid, ring, and star network topologies with real-time agent-flow animations, rendered entirely in native SVG.", bullet_style))
-    story.append(Paragraph("&bull;&nbsp;&nbsp;Implemented Dijkstra's Shortest Path Algorithm from scratch to animate optimal routing in real time across weighted directed graphs.", bullet_style))
-
-    # --- TECHNICAL SKILLS ---
-    add_section_header("TECHNICAL SKILLS")
-    skills = [
-        ("Programming Languages:", "Python, HTML5, CSS3, SQL"),
-        ("Web & Full-Stack Development:", "React, Next.js, Vite, Tailwind CSS, FastAPI, Git, GitHub"),
-        ("Generative AI & LLMs:", "LangChain, OpenAI API, Google Gemini API, RAG, Prompt Engineering"),
-        ("Data & Visualization:", "Pandas, NumPy, Matplotlib"),
-        ("Tools & Platforms:", "Jupyter Notebook, Streamlit Cloud, Vercel, Postman")
+    edu3_data = [
+        [Paragraph("DAV International School, Amritsar &mdash; Senior Secondary (12th Grade)", entry_left_bold), Paragraph("Completed 2022", entry_right_bold)],
     ]
-    for label, val in skills:
-        p_text = f"<b>{label}</b> {val}"
-        story.append(Paragraph(p_text, ParagraphStyle('SkillLine', parent=body_style, leading=13.5, spaceAfter=2)))
+    t_edu3 = Table(edu3_data, colWidths=[400, 140])
+    t_edu3.setStyle(TableStyle([
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('LEFTPADDING', (0,0), (-1,-1), 0),
+        ('RIGHTPADDING', (0,0), (-1,-1), 0),
+        ('TOPPADDING', (0,0), (-1,-1), 0),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 1),
+    ]))
+    story.append(t_edu3)
 
     # --- CERTIFICATIONS ---
     add_section_header("CERTIFICATIONS")
-    cert_text = "<b>Artificial Intelligence and Machine Learning</b> -- MITS Academy -- Jul 2025 -- Dec 2025"
+    cert_text = "<b>Artificial Intelligence and Machine Learning Certificate</b> &mdash; MITS Academy (Jul 2025 &ndash; Dec 2025)"
     story.append(Paragraph(cert_text, ParagraphStyle('CertLine', parent=body_style, leading=13)))
 
     doc.build(story)
